@@ -1,27 +1,31 @@
 # BoilerplateFrontendOrionBootcamp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 16.2.6.
 
-## Development server
+## Servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este projeto está configurado com o `docker`. Para roda-lo é necessário ter instalado o docker
 
-## Code scaffolding
+Execute `docker-compose -f docker-compose.yml up` e espere pela mensagem `** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
 
-## Build
+## Geração de código
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng generate component component-name` para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Ajuda adicional
 
-## Running end-to-end tests
+Para obter mais ajuda sobre o Angular CLI, use `ng help` ou consulte a página [Angular CLI Overview and Command Reference](https://angular.io/cli).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Essa Aplicação conta com o uso de bibliotecas adicionais
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Bootstrap 
+- Para uso dos grids preferencialmente
+- [Veja a Documentação aqui](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+
+### Angular Material 
+- Uso de componentes pré existentes que podem facilitar o andamento do desenvolvimento do projeto
+- [Veja a Documentação Aqui](https://material.angular.io/components/categories)
