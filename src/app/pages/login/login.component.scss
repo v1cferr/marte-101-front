@@ -1,0 +1,125 @@
+$foundation-gray-scale-white: #fff;
+$foundation-gray-scale-black: #000;
+$remember-color: #BA8E73;
+
+$inactive-submit-color: #979797;
+
+.login {
+    // background-color: #b6b6b6;
+    background: url(../../../assets/Epic-Sky-03.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-bottom: 2.5rem;
+
+        h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: 0.045rem;
+        }
+
+        p {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .email {
+            mat-label {
+                color: #fff;
+            }
+
+            input {
+
+                color: #fff;
+                border: 1px solid #fff;
+                // background-color: #fff;
+            }
+
+            input:hover {
+                border: 1px solid #fff;
+            }
+        }
+
+        .password {
+            margin-top: 1.5rem;
+            color: #fff;
+            mat-label {
+                color: #fff;
+            }
+
+            input {
+                color: #fff;
+            }
+        }
+    }
+
+
+    .container {
+        padding: 0;
+        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .remember {
+            input[type="checkbox"] {
+                background-color: $remember-color;
+            }
+
+            label {
+                span {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .forgot {
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+
+    .submit {
+        border: none;
+        border-radius: 0.25rem;
+        opacity: 0.3;
+        cursor: not-allowed;
+        background: #979797;
+        padding: 0.625rem 0.5rem;
+        margin-top: 1.5rem;
+        height: 3.5rem;
+        width: 100%;
+
+        span {
+            color: #171717;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: "Roboto", sans-serif;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            letter-spacing: 0.07813rem;
+        }
+    }
+}
+
