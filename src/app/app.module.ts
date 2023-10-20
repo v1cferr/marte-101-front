@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 
 import { LoginModule } from './pages/login/login.module';
+import { RecoverPasswordModule } from './pages/recover-password/recover-password.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { LoginModule } from './pages/login/login.module';
 		BrowserAnimationsModule,
 		MatCardModule,
 		LoginModule,
+		RecoverPasswordModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

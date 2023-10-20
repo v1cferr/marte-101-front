@@ -5,5 +5,10 @@
   "hints": {
     "axe/forms": "off",
     "button-type": "off"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not samsung <= 21"
+  ]
 }
