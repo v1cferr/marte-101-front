@@ -1,11 +1,11 @@
 $foundation-gray-scale-white: #fff;
 $foundation-gray-scale-black: #000;
-$remember-color: #BA8E73;
-
+$active-color: #BA8E73;
+$border-input-color: #f2f2f2;
 $inactive-submit-color: #979797;
+$text-inactive-submit-color: #171717;
 
 .login {
-    // background-color: #b6b6b6;
     background: url(../../../assets/Epic-Sky-03.jpg) no-repeat center center fixed;
     background-size: cover;
     display: flex;
@@ -13,6 +13,10 @@ $inactive-submit-color: #979797;
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+    .content {
+        width: 60%;
+    }
 
     .welcome {
         display: flex;
@@ -22,14 +26,14 @@ $inactive-submit-color: #979797;
         margin-bottom: 2.5rem;
 
         h1 {
-            color: #fff;
+            color: $foundation-gray-scale-white;
             font-size: 3rem;
             font-weight: 500;
             letter-spacing: 0.045rem;
         }
 
         p {
-            color: #fff;
+            color: $foundation-gray-scale-white;
             font-size: 1rem;
             font-weight: 400;
             line-height: normal;
@@ -41,61 +45,90 @@ $inactive-submit-color: #979797;
         flex-direction: column;
         justify-content: center;
 
+        // Change Mat-Input Border Color & Caret Color on focus
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing,
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input,
+        ::ng-deep .mdc-text-field .mdc-text-field__input {
+            caret-color: $foundation-gray-scale-white;
+            border-color: $border-input-color;
+        }
+
+        // Focus to Change Border Color in Mat-Input
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing,
+        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-text-field__input {
+            border-color: $active-color;
+        }
+
         .email {
             mat-label {
-                color: #fff;
+                color: $foundation-gray-scale-white;
             }
 
             input {
-
-                color: #fff;
-                border: 1px solid #fff;
-                // background-color: #fff;
+                color: $foundation-gray-scale-white;
             }
 
             input:hover {
-                border: 1px solid #fff;
+                border: 1px solid $foundation-gray-scale-white;
             }
         }
 
         .password {
             margin-top: 1.5rem;
-            color: #fff;
+            color: $foundation-gray-scale-white;
+
             mat-label {
-                color: #fff;
+                color: $foundation-gray-scale-white;
             }
 
             input {
-                color: #fff;
+                color: $foundation-gray-scale-white;
             }
         }
     }
 
 
     .container {
-        padding: 0;
-        align-items: flex-start;
+        align-items: center;
         display: flex;
+        padding: 0;
         justify-content: space-between;
         width: 100%;
 
         .remember {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+
             input[type="checkbox"] {
-                background-color: $remember-color;
+                width: 1rem;
+                height: 1rem;
+
+                &:checked {
+                    color: $foundation-gray-scale-white;
+                    accent-color: $active-color;   
+                }
             }
 
             label {
-                span {
-                    color: #fff;
-                }
+                color: $foundation-gray-scale-white;
             }
         }
     }
 
     .forgot {
+        display: flex;
+        align-items: baseline;
+
         a {
+            color: $foundation-gray-scale-white;
+            text-align: center;
             text-decoration: none;
-            color: #fff;
         }
     }
 
@@ -103,15 +136,14 @@ $inactive-submit-color: #979797;
         border: none;
         border-radius: 0.25rem;
         opacity: 0.3;
-        cursor: not-allowed;
-        background: #979797;
+        background: $inactive-submit-color;
         padding: 0.625rem 0.5rem;
         margin-top: 1.5rem;
         height: 3.5rem;
         width: 100%;
 
         span {
-            color: #171717;
+            color: $text-inactive-submit-color;
             text-align: center;
             text-transform: uppercase;
             font-family: "Roboto", sans-serif;
