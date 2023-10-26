@@ -8,9 +8,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/app/material/material.module';
 
 import { RecoverPasswordComponent } from './recover-password.component';
+import { SuccessWindowComponent } from 'src/app/components/success-window/success-window.component';
 
 @NgModule({
-	declarations: [RecoverPasswordComponent],
+	declarations: [RecoverPasswordComponent, SuccessWindowComponent],
 	imports: [
 		CommonModule,
 		FormsModule,

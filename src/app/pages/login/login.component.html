@@ -5,35 +5,36 @@
 			<p>Por favor, preencha os campos abaixo para logar.</p>
 		</div>
 
-		<form class="form" (ngSubmit)="onSubmit()" [formGroup]="loginForm" #formDir="ngForm">
-			<mat-form-field class="email" appearance="outline" matNativeControl>
+		<form [formGroup]="loginForm" class="form">
+			<mat-form-field
+				class="email"
+				appearance="outline"
+				[hideRequiredMarker]="true"
+			>
 				<mat-label>E-mail</mat-label>
-				<input 
-					matInput type="email" 
-					autocomplete="on" 
+				<input
+					matInput
 					formControlName="email"
-					required/>
-
-				<span *ngIf="email.invalid && formDir.submitted" class="validation-err">
-					<p *ngIf="email.errors?.['required']">Campo Obrigatório</p>
-					<p *ngIf="email.errors?.['email']">E-mail inválido</p>
-				</span>
+					type="email"
+					autocomplete="on"
+				/>
+				<mat-error *ngIf="loginForm.get('email')?.invalid"
+					>Informe um e-mail válido</mat-error
+				>
 			</mat-form-field>
 
-			<mat-form-field class="password" appearance="outline">
+			<mat-form-field
+				class="password"
+				appearance="outline"
+				[hideRequiredMarker]="true"
+			>
 				<mat-label>Senha</mat-label>
 				<input
 					matInput
+					formControlName="password"
 					[type]="hide ? 'password' : 'text'"
-					id="password"
 					autocomplete="off"
-					formControlName="senha"
-					required
 				/>
-				<span *ngIf="senha.invalid && formDir.submitted" class="validation-err">
-					<p *ngIf="senha.errors?.['required']">Campo Obrigatório</p>
-					<p *ngIf="senha.errors?.['minLength']">A senha possui mínimo de 8 dígitos. Tente novamente</p>
-				</span>
 				<button
 					mat-icon-button
 					matSuffix
@@ -56,7 +57,12 @@
 				</div>
 			</div>
 
-			<button mat-flat-button class="submit" type="submit" >
+			<button
+				mat-flat-button
+				class="submit"
+				type="submit"
+				[disabled]="!loginForm.valid"
+			>
 				<span>Entrar</span>
 			</button>
 		</form>
