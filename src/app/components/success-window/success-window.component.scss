@@ -4,19 +4,19 @@ $bold-text-color: #000000de;
 $black: #000;
 
 section {
-	width: 50vw;
-	height: 50vh;
 	background-color: $window-bg-color;
+	border: 0.25px solid $black;
+	border-radius: 0.25rem;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 	color: $text-color;
 	margin: 0 auto;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	height: 400px;
+	width: 370px;
 	z-index: 100;
-	border-radius: 0.25rem;
-	border: 0.25px solid $black;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
 	.close-icon {
 		position: absolute;
@@ -53,6 +53,7 @@ section {
 			font-size: 0.75rem;
 			font-weight: 400;
 			text-align: center;
+			margin: 0 3.75rem 0 3.75rem;
 		}
 
 		.finish {

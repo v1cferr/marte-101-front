@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { NgIf } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/app/material/material.module';
-
-import { RecoverPasswordComponent } from './recover-password.component';
 import { SuccessWindowComponent } from 'src/app/components/success-window/success-window.component';
+import { NewPasswordComponent } from './new-password.component';
 
 @NgModule({
-	declarations: [RecoverPasswordComponent],
+	declarations: [NewPasswordComponent],
 	imports: [
 		CommonModule,
-		FormsModule,
-		ReactiveFormsModule,
 		FlexLayoutModule,
 		MaterialModule,
+		FormsModule,
+		ReactiveFormsModule,
+		NgIf,
 		SuccessWindowComponent,
 	],
-	exports: [RecoverPasswordComponent],
+	exports: [NewPasswordComponent],
 })
-export class RecoverPasswordModule {}
+export class NewPasswordModule {}

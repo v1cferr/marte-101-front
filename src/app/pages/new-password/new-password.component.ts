@@ -4,23 +4,26 @@ import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
 
 @Component({
-	selector: 'app-recover-password',
-	templateUrl: './recover-password.component.html',
-	styleUrls: ['./recover-password.component.scss'],
+	selector: 'app-new-password',
+	templateUrl: './new-password.component.html',
+	styleUrls: ['./new-password.component.scss'],
 })
-export class RecoverPasswordComponent {
-	public recoverForm = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email]),
-	});
+export class NewPasswordComponent {
+	public hide = true;
 
 	constructor(private router: Router, private windowService: WindowService) {}
 
-	/*
-	 * goToLogin
-	 *
-	 * Rota de retorno para a login page
-	 * (click) on button[class="cancel"]
-	 */
+	public newPasswordForm = new FormGroup({
+		password: new FormControl('', [
+			Validators.required,
+			Validators.minLength(8),
+		]),
+		confirmPassword: new FormControl('', [
+			Validators.required,
+			Validators.minLength(8),
+		]),
+	});
+
 	public goToLogin() {
 		this.router.navigate(['']);
 	}
