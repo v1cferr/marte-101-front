@@ -1,0 +1,66 @@
+$window-bg-color: #fff;
+$text-color: #020204;
+$bold-text-color: #000000de;
+$black: #000;
+
+section {
+	width: 50vw;
+	height: 50vh;
+	background-color: $window-bg-color;
+	color: $text-color;
+	margin: 0 auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	border-radius: 0.25rem;
+	border: 0.25px solid $black;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+	.close-icon {
+		position: absolute;
+		top: 0;
+		right: 0;
+		cursor: pointer;
+		margin: 1.5rem 1.5rem 0 0;
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		height: 100%;
+		width: 100%;
+		gap: 1rem;
+		flex-shrink: 0;
+
+		.success-icon {
+			font-size: 4.3125rem;
+			width: 4.3125rem;
+			height: 4.3125rem;
+		}
+
+		.title {
+			font-size: 1.5rem;
+			font-weight: 700;
+			letter-spacing: 0.0075rem;
+		}
+
+		.description {
+			font-size: 0.75rem;
+			font-weight: 400;
+			text-align: center;
+		}
+
+		.finish {
+			border-radius: 0.25rem;
+			border: 1px solid $black;
+			width: 15.9375rem;
+			height: 3.5rem;
+			text-transform: uppercase;
+		}
+	}
+}
