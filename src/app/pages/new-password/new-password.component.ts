@@ -100,15 +100,6 @@ export class NewPasswordComponent {
 	);
 
 	/**
-	 * Submits the form and logs the value of the new password form.
-	 *
-	 * @return {void} No return value.
-	 */
-	public submitForm(): void {
-		console.log(this.newPasswordForm.value);
-	}
-
-	/**
 	 * Navigates to the login page.
 	 *
 	 * @return {void} No return value.
@@ -124,5 +115,14 @@ export class NewPasswordComponent {
 	 */
 	public openSuccessWindow(): void {
 		this.windowService.openWindow();
+	}
+
+	/**
+	 * Submits the form and logs the value of the new password form.
+	 *
+	 * @return {void} No return value.
+	 */
+	public submitForm(): void {
+		console.log(this.newPasswordForm.value);
 	}
 }
