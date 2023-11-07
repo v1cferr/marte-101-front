@@ -193,4 +193,16 @@ $text-inactive-submit-color: #171717;
 			}
 		}
 	}
+
+	.registration {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1.25rem;
+
+		a {
+			color: $foundation-gray-scale-white;
+			text-align: center;
+		}
+	}
 }
