@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginModule } from './pages/login/login.module';
 import { RecoverPasswordModule } from './pages/recover-password/recover-password.module';
 import { NewPasswordModule } from './pages/new-password/new-password.module';
+import { RegistrationModule } from './pages/registration/registration.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { NewPasswordModule } from './pages/new-password/new-password.module';
 		LoginModule,
 		RecoverPasswordModule,
 		NewPasswordModule,
+		RegistrationModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
