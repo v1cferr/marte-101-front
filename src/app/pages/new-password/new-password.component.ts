@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
 import {
 	FormControl,
@@ -12,9 +13,10 @@ import { Router } from '@angular/router';
 	selector: 'app-new-password',
 	templateUrl: './new-password.component.html',
 	styleUrls: ['./new-password.component.scss'],
+	providers: [],
 })
 export class NewPasswordComponent {
-	public hide = true;
+	public hide: boolean = true;
 
 	constructor(private router: Router) {}
 
@@ -61,18 +63,23 @@ export class NewPasswordComponent {
 	}
 
 	/**
-	 * Returns a validator function that checks if the values of 'newPassword' and 'confirmPassword' match.
-	 *
-	 * @return {ValidatorFn} A validator function that returns an object with a 'passwordMatch' key set to true if the values do not match, or null if they match.
+	 * Returns a validator function that checks if the password and confirm password fields match.
+	 * @returns {ValidatorFn} The validator function.
 	 */
 	public passwordMatchValidator(): ValidatorFn {
 		return (control: AbstractControl): { [key: string]: boolean } | null => {
-			const newPassword = control.get('newPassword')?.value;
-			const confirmPassword = control.get('confirmPassword')?.value;
+			// Get the values of the new password and confirm password fields
+			const newPassword: string =
+				(control.get('newPassword')?.value as string) || '';
+			const confirmPassword: string =
+				(control.get('confirmPassword')?.value as string) || '';
 
+			// Check if the new password and confirm password fields match
 			if (newPassword !== confirmPassword) {
 				return { passwordMatch: true };
 			}
+
+			// Return null if the passwords match
 			return null;
 		};
 	}
@@ -111,6 +118,6 @@ export class NewPasswordComponent {
 	 * @return {void} No return value.
 	 */
 	public submitForm(): void {
-		console.log(this.newPasswordForm.value);
+		return;
 	}
 }
