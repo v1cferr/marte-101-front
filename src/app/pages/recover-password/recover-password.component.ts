@@ -29,6 +29,6 @@ export class RecoverPasswordComponent {
 	 * @return {void}
 	 */
 	public submitEmail(): void {
-		console.log(this.recoverForm.value);
+		return;
 	}
 }
