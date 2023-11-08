@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
@@ -10,24 +11,25 @@ import { MaterialModule } from 'src/app/material/material.module';
 	selector: 'app-success-window',
 	templateUrl: './success-window.component.html',
 	styleUrls: ['./success-window.component.scss'],
+	providers: [WindowService],
 	standalone: true,
 })
 export class SuccessWindowComponent {
-	@Input() description = '';
+	@Input() public description: string = '';
 
-	WindowIsOpen = false;
+	public windowIsOpen: boolean = false;
 
 	/**
 	 * Initializes a new instance of the class.
 	 *
-	 * @param {Router} router - The router service.
-	 * @param {WindowService} windowService - The window service.
+	 * @param {Router} router - The router instance.
+	 * @param {WindowService} windowService - The window service instance.
 	 */
 	constructor(private router: Router, private windowService: WindowService) {
 		// Subscribe to the isOpen$ observable of the windowService
 		this.windowService.isOpen$.subscribe((isOpen) => {
-			// Update the WindowIsOpen property with the value received from the observable
-			this.WindowIsOpen = isOpen;
+			// Update the windowIsOpen property with the value received from the observable
+			this.windowIsOpen = isOpen;
 		});
 	}
 
@@ -37,8 +39,8 @@ export class SuccessWindowComponent {
 	 * @return {void}
 	 */
 	public closeWindow(): void {
-		// Set the WindowIsOpen property to false to close the window
-		this.WindowIsOpen = false;
+		// Set the windowIsOpen flag to false to close the window
+		this.windowIsOpen = false;
 	}
 
 	/**

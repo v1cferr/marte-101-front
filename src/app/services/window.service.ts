@@ -5,15 +5,16 @@ import { BehaviorSubject } from 'rxjs';
 	providedIn: 'root',
 })
 export class WindowService {
-	private isOpenSubject = new BehaviorSubject<boolean>(false);
-	isOpen$ = this.isOpenSubject.asObservable();
+	private isOpenSubject: BehaviorSubject<boolean> =
+		new BehaviorSubject<boolean>(false);
+	public isOpen$ = this.isOpenSubject.asObservable();
 
 	/**
 	 * Opens a window.
 	 *
 	 * @return {void}
 	 */
-	openWindow(): void {
+	public openWindow(): void {
 		// Set the value of isOpenSubject to true
 		this.isOpenSubject.next(true);
 	}
@@ -23,7 +24,7 @@ export class WindowService {
 	 *
 	 * @return {void} No return value.
 	 */
-	closeWindow(): void {
+	public closeWindow(): void {
 		// Set the value of isOpenSubject to false
 		this.isOpenSubject.next(false);
 	}
