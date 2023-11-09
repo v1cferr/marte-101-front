@@ -1,0 +1,13 @@
+<section *ngIf="WindowIsOpen">
+	<div class="content">
+		<mat-icon class="close-icon" (click)="closeWindow()">close</mat-icon>
+		<mat-icon class="success-icon">check_circle_outline</mat-icon>
+		<h1 class="title">Sucesso!</h1>
+
+		<p class="description">{{ description }}</p>
+
+		<button mat-flat-button class="finish" type="button" (click)="goToLogin()">
+			<span>Finalizar</span>
+		</button>
+	</div>
+</section>
