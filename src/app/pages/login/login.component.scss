@@ -1,6 +1,6 @@
 $foundation-gray-scale-white: #fff;
 $foundation-gray-scale-black: #000;
-$active-color: #BA8E73;
+$active-color: #ba8e73;
 $border-input-color: #f2f2f2;
 $inactive-submit-color: #979797;
 $text-inactive-submit-color: #171717;
@@ -13,10 +13,6 @@ $text-inactive-submit-color: #171717;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
-    .content {
-        width: 60%;
-    }
 
     .welcome {
         display: flex;
@@ -46,24 +42,52 @@ $text-inactive-submit-color: #171717;
         justify-content: center;
 
         // Change Mat-Input Border Color & Caret Color on focus
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing,
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input,
+        ::ng-deep
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+            .mdc-notched-outline__leading,
+        ::ng-deep
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+            .mdc-notched-outline__notch,
+        ::ng-deep
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+            .mdc-notched-outline__trailing,
+        ::ng-deep
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+            .mdc-text-field__input,
         ::ng-deep .mdc-text-field .mdc-text-field__input {
             caret-color: $foundation-gray-scale-white;
             border-color: $border-input-color;
         }
 
         // Focus to Change Border Color in Mat-Input
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing,
-        ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-text-field__input {
+        ::ng-deep
+            .mdc-text-field--outlined:not(
+                .mdc-text-field--disabled
+            ).mdc-text-field--focused
+            .mdc-notched-outline__leading,
+        ::ng-deep
+            .mdc-text-field--outlined:not(
+                .mdc-text-field--disabled
+            ).mdc-text-field--focused
+            .mdc-notched-outline__notch,
+        ::ng-deep
+            .mdc-text-field--outlined:not(
+                .mdc-text-field--disabled
+            ).mdc-text-field--focused
+            .mdc-notched-outline__trailing,
+        ::ng-deep
+            .mdc-text-field--outlined:not(
+                .mdc-text-field--disabled
+            ).mdc-text-field--focused
+            .mdc-text-field__input {
             border-color: $active-color;
+            transition: border-color 0.2s ease-in-out;
         }
 
         .email {
+            width: 32.6875rem;
+            height: 4.5rem;
+
             mat-label {
                 color: $foundation-gray-scale-white;
             }
@@ -71,14 +95,10 @@ $text-inactive-submit-color: #171717;
             input {
                 color: $foundation-gray-scale-white;
             }
-
-            input:hover {
-                border: 1px solid $foundation-gray-scale-white;
-            }
         }
 
         .password {
-            margin-top: 1.5rem;
+            margin: 1.5rem 0 1.5rem 0;
             color: $foundation-gray-scale-white;
 
             mat-label {
@@ -90,7 +110,6 @@ $text-inactive-submit-color: #171717;
             }
         }
     }
-
 
     .container {
         align-items: center;
@@ -105,13 +124,21 @@ $text-inactive-submit-color: #171717;
             justify-content: center;
             gap: 0.5rem;
 
+            span {
+                color: $foundation-gray-scale-white;
+            }
+
+            .custom-checkbox.mat-checkbox-checked .mat-checkbox-inner-container {
+                background-color: $active-color;
+                border-color: $active-color;
+            }
+
             input[type="checkbox"] {
                 width: 1rem;
                 height: 1rem;
 
                 &:checked {
-                    color: $foundation-gray-scale-white;
-                    accent-color: $active-color;   
+                    accent-color: $active-color;
                 }
             }
 
@@ -133,14 +160,17 @@ $text-inactive-submit-color: #171717;
     }
 
     .submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: none;
         border-radius: 0.25rem;
-        opacity: 0.3;
-        background: $inactive-submit-color;
         padding: 0.625rem 0.5rem;
         margin-top: 1.5rem;
         height: 3.5rem;
         width: 100%;
+        background: $inactive-submit-color;
+        opacity: 0.3;
 
         span {
             color: $text-inactive-submit-color;
@@ -151,6 +181,16 @@ $text-inactive-submit-color: #171717;
             font-style: normal;
             font-weight: 700;
             letter-spacing: 0.07813rem;
+        }
+
+        &:enabled {
+            transition: all 0.2s ease-in-out;
+            background: $active-color;
+            opacity: 1;
+
+            span {
+                color: $foundation-gray-scale-white;
+            }
         }
     }
 }
