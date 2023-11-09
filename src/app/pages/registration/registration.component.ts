@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
 import {
 	FormControl,
@@ -6,6 +7,7 @@ import {
 	AbstractControl,
 	ValidatorFn,
 } from '@angular/forms';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
 	selector: 'app-registration',
@@ -13,7 +15,9 @@ import {
 	styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
-	hide = true;
+	public hide: boolean = true;
+
+	constructor(private windowService: WindowService) {}
 
 	public uppercaseValidator(): ValidatorFn {
 		return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -76,7 +80,22 @@ export class RegistrationComponent {
 		}
 	);
 
+	/**
+	 * Opens a success window.
+	 *
+	 * This function opens a window to display a success message.
+	 *
+	 * @return {void} - This function does not return a value.
+	 */
+	public openSuccessWindow(): void {
+		// Open the window
+		this.windowService.openWindow();
+	}
+
 	onSubmit() {
-		console.log('submit');
+		const formInputs = this.registrationForm.value;
+		// const toJSON = JSON.stringify(formInputs);
+		console.log(formInputs);
+		return;
 	}
 }

@@ -234,9 +234,15 @@
 				class="submit"
 				type="submit"
 				[disabled]="!registrationForm.valid"
+				(click)="openSuccessWindow()"
+				(click)="onSubmit()"
 			>
 				<span>Salvar</span>
 			</button>
 		</div>
+
+		<app-success-window
+			[description]="'Cadastro finalizado com sucesso. Verifique seu e-mail'"
+		></app-success-window>
 	</section>
 </main>
