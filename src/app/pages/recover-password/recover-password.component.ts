@@ -33,7 +33,12 @@ export class RecoverPasswordComponent {
 		return;
 	}
 
-	public openSuccessWindow() {
+  /**
+	 * Opens a success window.
+	 * 
+	 *  @return {void} No return value. 
+	 */
+	public openSuccessWindow():void {
 		this.windowService.openWindow();
 	}
 }
