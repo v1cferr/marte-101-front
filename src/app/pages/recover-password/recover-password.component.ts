@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
 	selector: 'app-recover-password',
@@ -12,7 +13,7 @@ export class RecoverPasswordComponent {
 		email: new FormControl('', [Validators.required, Validators.email]),
 	});
 
-	constructor(private router: Router) {}
+	constructor(private router: Router, private windowService: WindowService) {}
 
 	/**
 	 * Navigates to the login page.
@@ -30,5 +31,9 @@ export class RecoverPasswordComponent {
 	 */
 	public submitEmail(): void {
 		return;
+	}
+
+	public openSuccessWindow() {
+		this.windowService.openWindow();
 	}
 }

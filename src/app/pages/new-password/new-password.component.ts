@@ -8,6 +8,8 @@ import {
 	ValidatorFn,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { WindowService } from 'src/app/services/window.service';
+
 
 @Component({
 	selector: 'app-new-password',
@@ -18,7 +20,7 @@ import { Router } from '@angular/router';
 export class NewPasswordComponent {
 	public hide: boolean = true;
 
-	constructor(private router: Router) {}
+	constructor(private router: Router, private windowService: WindowService) {}
 
 	/**
 	 * Returns a validator function that checks if the input value contains at least one uppercase letter.
@@ -110,6 +112,15 @@ export class NewPasswordComponent {
 	 */
 	public goToLogin(): void {
 		this.router.navigate(['']);
+	}
+
+	/**
+	 * Opens a success window.
+	 *
+	 * @return {void} No return value.
+	 */
+	public openSuccessWindow(): void {
+		this.windowService.openWindow();
 	}
 
 	/**
