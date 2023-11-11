@@ -11,7 +11,6 @@ import { MaterialModule } from 'src/app/material/material.module';
 	selector: 'app-success-window',
 	templateUrl: './success-window.component.html',
 	styleUrls: ['./success-window.component.scss'],
-	providers: [WindowService],
 	standalone: true,
 })
 export class SuccessWindowComponent {
