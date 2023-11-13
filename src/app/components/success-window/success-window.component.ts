@@ -15,11 +15,11 @@ import { MaterialModule } from 'src/app/material/material.module';
 export class SuccessWindowComponent {
 	@Input() description = '';
 
-	WindowIsOpen = false;
+	windowIsOpen = false;
 
 	constructor(private router: Router, private windowService: WindowService) {
 		this.windowService.isOpen$.subscribe((isOpen) => {
-			this.WindowIsOpen = isOpen;
+			this.windowIsOpen = isOpen;
 		});
 	}
 
@@ -30,7 +30,7 @@ export class SuccessWindowComponent {
 	 * (click) on mat-icon[class="close-icon"]
 	 */
 	public closeWindow() {
-		this.WindowIsOpen = false;
+		this.windowIsOpen = false;
 	}
 
 	/*
