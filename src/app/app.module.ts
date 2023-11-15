@@ -11,6 +11,7 @@ import { LoginModule } from './pages/login/login.module';
 import { RecoverPasswordModule } from './pages/recover-password/recover-password.module';
 import { NewPasswordModule } from './pages/new-password/new-password.module';
 import { RegistrationModule } from './pages/registration/registration.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { RegistrationModule } from './pages/registration/registration.module';
 		RecoverPasswordModule,
 		NewPasswordModule,
 		RegistrationModule,
+		HomeModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
