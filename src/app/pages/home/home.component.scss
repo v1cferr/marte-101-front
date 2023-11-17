@@ -27,7 +27,7 @@ $warning-text-color: #b0683b;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-bottom: 4rem;
+			margin-bottom: 8rem;
 
 			.title {
 				h1 {
@@ -64,7 +64,6 @@ $warning-text-color: #b0683b;
 
 				img {
 					width: 100%;
-					height: auto;
 					border-radius: 0.625rem 0.625rem 0rem 0rem;
 				}
 
@@ -77,6 +76,7 @@ $warning-text-color: #b0683b;
 					justify-content: space-between;
 					background: $foundation-gray-scale-white;
 					padding: 1rem;
+					margin-top: -0.4rem;
 
 					.warning {
 						display: flex;
