@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import axios from 'axios';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,7 @@ import { LoginModule } from './pages/login/login.module';
 import { RecoverPasswordModule } from './pages/recover-password/recover-password.module';
 import { NewPasswordModule } from './pages/new-password/new-password.module';
 import { RegistrationModule } from './pages/registration/registration.module';
+
 
 @NgModule({
 	declarations: [AppComponent],

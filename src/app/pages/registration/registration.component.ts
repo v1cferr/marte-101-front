@@ -7,7 +7,8 @@ import {
 	AbstractControl,
 	ValidatorFn,
 } from '@angular/forms';
-import { WindowService } from 'src/app/services/window.service';
+import { WindowService } from 'src/app/services/window.service'
+import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 
 @Component({
 	selector: 'app-registration',
@@ -17,7 +18,7 @@ import { WindowService } from 'src/app/services/window.service';
 export class RegistrationComponent {
 	public hide: boolean = true;
 
-	constructor(private windowService: WindowService) {}
+	constructor(private windowService: WindowService, private apiService: Marte101ApiService) {}
 
 	public uppercaseValidator(): ValidatorFn {
 		return (control: AbstractControl): { [key: string]: boolean } | null => {
@@ -92,10 +93,14 @@ export class RegistrationComponent {
 		this.windowService.openWindow();
 	}
 
-	onSubmit() {
-		const formInputs = this.registrationForm.value;
-		// const toJSON = JSON.stringify(formInputs);
-		console.log(formInputs);
+	onSubmit(): void {
+		const getFormInputsValues = this.registrationForm.value;
+		const toJSON = JSON.stringify(getFormInputsValues);
+
+
+		console.log(toJSON);
 		return;
 	}
+
+
 }
