@@ -1,0 +1,158 @@
+$active-color: #ba8e73;
+$title-secondary-color: #ffd2b5;
+$foundation-gray-scale-white: #fff;
+$foundation-gray-scale-black: #000;
+$inactive-send-color: #979797;
+$text-inactive-send-color: #171717;
+$warning-bg-color: #f9d6c7;
+$warning-text-color: #b0683b;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: $foundation-gray-scale-white;
+}
+
+.home {
+	background: url(../../../assets/Epic-Sky-03-2.png) no-repeat center center;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+
+	.content {
+		padding: 5rem 5rem 10rem 5rem;
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 8rem;
+
+			.title {
+				h1 {
+					font-size: 2.5rem;
+					font-weight: 700;
+
+					span {
+						color: $title-secondary-color;
+					}
+				}
+
+				p {
+					font-size: 1rem;
+					font-weight: 400;
+				}
+			}
+
+			.mat {
+				color: $active-color;
+				font-size: 2.1875rem;
+				height: 2.1875rem;
+				width: 2.1875rem;
+			}
+		}
+		.cards {
+			display: flex;
+			justify-content: space-around;
+			gap: 2.1875rem;
+
+			.card {
+				width: 23.6875rem;
+				height: 24.6875rem;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+				img {
+					width: 100%;
+					border-radius: 0.625rem 0.625rem 0rem 0rem;
+				}
+
+				.container {
+					border-bottom-left-radius: 0.625rem;
+					border-bottom-right-radius: 0.625rem;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: space-between;
+					background: $foundation-gray-scale-white;
+					padding: 1rem;
+					margin-top: -0.4rem;
+
+					.warning {
+						display: flex;
+						height: 1.26088rem;
+						padding: 0.15763rem;
+						align-items: center;
+						border-radius: 0.63044rem;
+						background: $warning-bg-color;
+
+						div {
+							display: flex;
+							padding: 0rem 0.31519rem;
+							justify-content: center;
+							align-items: center;
+							align-self: stretch;
+
+							span {
+								color: $warning-text-color;
+								font-size: 0.55163rem;
+								font-weight: 700;
+								letter-spacing: 0.00988rem;
+								text-transform: uppercase;
+								line-height: 0.78806rem;
+							}
+						}
+					}
+
+					.description {
+						display: flex;
+						flex-direction: column;
+						gap: 0.5rem;
+
+						h3,
+						p {
+							color: $foundation-gray-scale-black;
+						}
+
+						h3 {
+							margin: 0.5rem 0 0 0;
+							font-size: 1.125rem;
+							font-weight: 700;
+						}
+
+						p {
+							font-size: 0.875rem;
+							font-weight: 400;
+							line-height: 1.225rem;
+						}
+
+						.button {
+							height: 3.5rem;
+							width: 100%;
+							background-color: $inactive-send-color;
+							opacity: 0.3;
+
+							span {
+								color: $text-inactive-send-color;
+								font-size: 0.875rem;
+								font-weight: 700;
+								letter-spacing: 0.07813rem;
+								text-transform: uppercase;
+							}
+
+							&:enabled {
+								transition: all 0.2s ease-in-out;
+								background: $active-color;
+								opacity: 1;
+
+								span {
+									color: $foundation-gray-scale-white;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
