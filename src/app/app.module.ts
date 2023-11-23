@@ -12,6 +12,7 @@ import { RecoverPasswordModule } from './pages/recover-password/recover-password
 import { NewPasswordModule } from './pages/new-password/new-password.module';
 import { RegistrationModule } from './pages/registration/registration.module';
 import { HomeModule } from './pages/home/home.module';
+import { MeteorologyModule } from './pages/meteorology/meteorology.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { HomeModule } from './pages/home/home.module';
 		NewPasswordModule,
 		RegistrationModule,
 		HomeModule,
+		MeteorologyModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
