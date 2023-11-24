@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
 	FormControl,
 	FormGroup,
@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
 import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -18,11 +19,26 @@ import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 	styleUrls: ['./new-password.component.scss'],
 	providers: [],
 })
-export class NewPasswordComponent {
+export class NewPasswordComponent implements OnInit {
+	token: string = '';
 	public hide: boolean = true;
 
-	constructor(private router: Router, private windowService: WindowService, private apiService: Marte101ApiService) {}
+	constructor(private router: Router,private route: ActivatedRoute, private windowService: WindowService, private apiService: Marte101ApiService) {}
 
+	ngOnInit() {
+
+		this.route.url.subscribe(segments => {
+		
+		const urlSegments = segments.map(segment => segment.path);
+
+		console.log(urlSegments);
+		
+		localStorage.setItem('token', urlSegments[1]);
+
+		});	
+    
+	}
+	
 	/**
 	 * Returns a validator function that checks if the input value contains at least one uppercase letter.
 	 *

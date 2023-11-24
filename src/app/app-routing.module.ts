@@ -13,7 +13,7 @@ const routes: Routes = [
 	{ path: 'registration', component: RegistrationComponent },
 
 	{
-		path: 'new-password',
+		path: 'new-password/:token',
 		component: NewPasswordComponent,
 	},
 
