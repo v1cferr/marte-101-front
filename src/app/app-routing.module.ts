@@ -5,6 +5,7 @@ import { RecoverPasswordComponent } from './pages/recover-password/recover-passw
 import { NewPasswordComponent } from './pages/new-password/new-password.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { HomeComponent } from './pages/home/home.component';
+import {AuthGuard } from '.pages/login/auth/auth.guard';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent },
