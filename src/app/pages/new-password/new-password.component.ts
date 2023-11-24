@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
+import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { WindowService } from 'src/app/services/window.service';
 export class NewPasswordComponent {
 	public hide: boolean = true;
 
-	constructor(private router: Router, private windowService: WindowService) {}
+	constructor(private router: Router, private windowService: WindowService, private apiService: Marte101ApiService) {}
 
 	/**
 	 * Returns a validator function that checks if the input value contains at least one uppercase letter.
@@ -34,6 +35,26 @@ export class NewPasswordComponent {
 			}
 			return null;
 		};
+	}
+
+	async onSubmit() {
+        const getFormInputsValues = this.newPasswordForm.value as {
+            confirmPassword: string;
+        };
+
+        const token = localStorage.getItem('token');
+
+        try {
+            await this.apiService.patchUserNewPassword(
+                getFormInputsValues.confirmPassword as string,
+                token as string
+            );
+        
+        } catch (error) {
+            console.log(error);
+        
+        }
+
 	}
 
 	/**

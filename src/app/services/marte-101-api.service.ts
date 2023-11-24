@@ -53,4 +53,16 @@ export class Marte101ApiService {
 	// 4- POST | `/users/new-user` | Rota para criar novo usuário.
 
 	// 6- PATCH | `users/password-change` | Rota para alteração de senha.
+	patchUserNewPassword(
+        token: string,
+        password: string
+    ): Promise<any> {
+        return this.http
+            .patch('http://localhost:4444/users/password-change', {
+                token,
+                password,
+            })
+            .toPromise();
+    }
 }
+
