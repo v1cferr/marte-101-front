@@ -25,20 +25,20 @@ export class RecoverPasswordComponent {
 	}
 
 	/**
+	 * Opens a success window.
+	 *
+	 *  @return {void} No return value.
+	 */
+	public openSuccessWindow(): void {
+		this.windowService.openWindow();
+	}
+
+	/**
 	 * Submits the email form.
 	 *
 	 * @return {void}
 	 */
 	public submitEmail(): void {
 		return;
-	}
-
-  /**
-	 * Opens a success window.
-	 * 
-	 *  @return {void} No return value. 
-	 */
-	public openSuccessWindow():void {
-		this.windowService.openWindow();
 	}
 }

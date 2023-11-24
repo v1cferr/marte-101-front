@@ -1,71 +1,71 @@
 <section class="login">
-    <div class="content">
-        <div class="welcome">
-            <h1>Bem vindo(a)!</h1>
-            <p>Por favor, preencha os campos abaixo para logar.</p>
-        </div>
+	<div class="content">
+		<div class="welcome">
+			<h1>Bem vindo(a)!</h1>
+			<p>Por favor, preencha os campos abaixo para logar.</p>
+		</div>
 
-        <form [formGroup]="loginForm" class="form">
-            <mat-form-field
-                class="email"
-                appearance="outline"
-                [hideRequiredMarker]="true"
-            >
-                <mat-label>E-mail</mat-label>
-                <input
-                    matInput
-                    formControlName="email"
-                    type="email"
-                    autocomplete="on"
-                />
-                <mat-error *ngIf="loginForm.get('email')?.invalid"
-                    >Informe um e-mail válido</mat-error
-                >
-            </mat-form-field>
+		<form [formGroup]="loginForm" class="form">
+			<mat-form-field
+				class="email"
+				appearance="outline"
+				[hideRequiredMarker]="true"
+			>
+				<mat-label>E-mail</mat-label>
+				<input
+					matInput
+					formControlName="email"
+					type="email"
+					autocomplete="on"
+				/>
+				<mat-error *ngIf="loginForm.get('email')?.invalid"
+					>Informe um e-mail válido</mat-error
+				>
+			</mat-form-field>
 
-            <mat-form-field
-                class="password"
-                appearance="outline"
-                [hideRequiredMarker]="true"
-            >
-                <mat-label>Senha</mat-label>
-                <input
-                    matInput
-                    formControlName="password"
-                    [type]="hide ? 'password' : 'text'"
-                    autocomplete="off"
-                />
-                <button
-                    mat-icon-button
-                    matSuffix
-                    (click)="hide = !hide"
-                    [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide"
-                >
-                    <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-                </button>
-            </mat-form-field>
+			<mat-form-field
+				class="password"
+				appearance="outline"
+				[hideRequiredMarker]="true"
+			>
+				<mat-label>Senha</mat-label>
+				<input
+					matInput
+					formControlName="password"
+					[type]="hide ? 'password' : 'text'"
+					autocomplete="off"
+				/>
+				<button
+					mat-icon-button
+					matSuffix
+					(click)="hide = !hide"
+					[attr.aria-label]="'Hide password'"
+					[attr.aria-pressed]="hide"
+				>
+					<mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+				</button>
+			</mat-form-field>
 
-            <div class="container">
-                <div class="remember">
-                    <input type="checkbox" id="remember" name="remember" />
-                    <label for="remember"><span>Lembrar de mim</span></label>
-                </div>
+			<div class="container">
+				<div class="remember">
+					<input type="checkbox" id="remember" name="remember" />
+					<label for="remember"><span>Lembrar de mim</span></label>
+				</div>
 
-                <div class="forgot">
-                    <a href="recover-password">Esqueceu a senha?</a>
-                </div>
-            </div>
+				<div class="forgot">
+					<a href="recover-password">Esqueceu a senha?</a>
+				</div>
+			</div>
 
-            <button
-                mat-flat-button
-                class="submit"
-                type="submit"
-                [disabled]="!loginForm.valid"
-            >
-                <span>Entrar</span>
-            </button>
-        </form>
-    </div>
+			<button
+				mat-flat-button
+				class="submit"
+				type="submit"
+				[disabled]="!loginForm.valid"
+				(click)="goToHome()"
+			>
+				<span>Entrar</span>
+			</button>
+		</form>
+	</div>
 </section>
-
