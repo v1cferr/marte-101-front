@@ -1,0 +1,23 @@
+<section class="confirmation-window" *ngIf="windowIsOpen">
+	<div class="content">
+		<mat-icon class="close-icon" (click)="closeWindow()">close</mat-icon>
+		<mat-icon class="warning-icon">warning_outline</mat-icon>
+
+		<h1 class="title">Terminar sessão?</h1>
+
+		<p class="description">
+			Tem certeza de que deseja encerrar a sessão? Você será direcionado para a
+			página de login.
+		</p>
+
+		<div class="buttons">
+			<button mat-flat-button class="yes" type="button" (click)="goToLogin()">
+				<span>Sim</span>
+			</button>
+
+			<button mat-flat-button class="no" type="button" (click)="closeWindow()">
+				<span>Não</span>
+			</button>
+		</div>
+	</div>
+</section>

@@ -45,11 +45,12 @@ $warning-text-color: #b0683b;
 				}
 			}
 
-			.mat {
+			.logout {
 				color: $active-color;
 				font-size: 2.1875rem;
 				height: 2.1875rem;
 				width: 2.1875rem;
+				cursor: pointer;
 			}
 		}
 		.cards {
