@@ -6,7 +6,9 @@
 				<p>Seja bem vindo(a)! O que veremos hoje?</p>
 			</div>
 
-			<a href=""><mat-icon class="mat">exit_to_app</mat-icon></a>
+			<mat-icon class="logout" (click)="openConfirmationWindow()"
+				>exit_to_app</mat-icon
+			>
 		</header>
 
 		<main class="cards">
@@ -86,5 +88,7 @@
 				</section>
 			</div>
 		</main>
+
+		<app-confirmation-window></app-confirmation-window>
 	</section>
 </main>

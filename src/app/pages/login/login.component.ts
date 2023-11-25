@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
 	selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-	constructor(private router: Router) {}
+	constructor(private router: Router, private windowService: WindowService) {}
 
 	public hide: boolean = true;
 
@@ -21,6 +22,8 @@ export class LoginComponent {
 		]),
 	});
 
+	public goToHome(): void {
+		this.windowService.closeWindow();
 	/**
 	 * Submits the form and navigates to the home page.
 	 *

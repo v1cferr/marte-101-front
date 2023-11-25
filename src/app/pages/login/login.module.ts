@@ -9,15 +9,15 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { LoginComponent } from './login.component';
 
 @NgModule({
-    declarations: [LoginComponent],
-    imports: [
-        CommonModule,
-        FlexLayoutModule,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-    ],
-    exports: [LoginComponent],
+	declarations: [LoginComponent],
+	imports: [
+		CommonModule,
+		FlexLayoutModule,
+		MaterialModule,
+		FormsModule,
+		ReactiveFormsModule,
+		NgIf,
+	],
+	exports: [LoginComponent],
 })
 export class LoginModule {}
