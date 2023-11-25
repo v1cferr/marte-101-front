@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
 	FormControl,
 	FormGroup,
@@ -7,8 +7,10 @@ import {
 	AbstractControl,
 	ValidatorFn,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
+import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -17,11 +19,31 @@ import { WindowService } from 'src/app/services/window.service';
 	styleUrls: ['./new-password.component.scss'],
 	providers: [],
 })
-export class NewPasswordComponent {
+export class NewPasswordComponent implements OnInit {
+	token: string = '';
 	public hide: boolean = true;
 
-	constructor(private router: Router, private windowService: WindowService) {}
+	constructor(private router: Router,private route: ActivatedRoute, private windowService: WindowService, private apiService: Marte101ApiService, private location: Location) {}
 
+	ngOnInit() {
+		this.route.url.subscribe(segments => {
+		const urlSegments: string[] = segments.map(segment => segment.path);
+		const token: string = urlSegments[1];
+		this.token = token;
+
+		console.log(urlSegments);
+		this.removeTokenFromUrl();
+		localStorage.setItem('token', token);
+		})
+		
+	}
+
+	public removeTokenFromUrl() {
+		const currentUrl = this.location.path();
+		const newUrl = currentUrl.replace(this.token, '');
+		this.location.replaceState(newUrl);
+	}
+	
 	/**
 	 * Returns a validator function that checks if the input value contains at least one uppercase letter.
 	 *
@@ -34,6 +56,29 @@ export class NewPasswordComponent {
 			}
 			return null;
 		};
+	}
+
+	async onSubmit() {
+        const getFormInputsValues = this.newPasswordForm.value as {
+            confirmPassword: string;
+        };
+
+        const token = localStorage.getItem('token');
+		console.log(token)
+
+        try {
+            await this.apiService.patchUserNewPassword(
+                token as string,
+                getFormInputsValues.confirmPassword as string
+            );
+			this.openSuccessWindow();
+			this.router.navigate(['/login']);
+			
+        
+        } catch (error) {
+            console.log(error);
+        
+		}
 	}
 
 	/**
