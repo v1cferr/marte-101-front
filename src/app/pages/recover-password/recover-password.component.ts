@@ -14,24 +14,11 @@ export class RecoverPasswordComponent {
 		email: new FormControl('', [Validators.required, Validators.email]),
 	});
 
-	constructor(private router: Router, private windowService: WindowService, private apiService: Marte101ApiService) {}
-
-	async onSubmit() {
-		const getEmail = this.recoverForm.value as {
-			email: string;
-			
-		};
-		
-		
-		try {
-			await this.apiService.postRecoverPassword(
-				getEmail.email as string,
-			);
-			this.openSuccessWindow();
-		} catch (error) {
-			console.log(error);
-		}
-	}
+	constructor(
+		private router: Router,
+		private windowService: WindowService,
+		private apiService: Marte101ApiService
+	) {}
 
 	/**
 	 * Navigates to the login page.
@@ -56,7 +43,18 @@ export class RecoverPasswordComponent {
 	 *
 	 * @return {void}
 	 */
-	public submitEmail(): void {
-		return;
+	public async submitEmail(): Promise<void> {
+		const getEmail = this.recoverForm.value as {
+			email: string;
+		};
+
+		try {
+			await this.apiService.postRecoverPassword(getEmail.email as string);
+			this.openSuccessWindow();
+
+			console.log();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }

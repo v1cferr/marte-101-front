@@ -13,14 +13,15 @@ const routes: Routes = [
 	{ path: 'recover-password', component: RecoverPasswordComponent },
 	{ path: 'registration', component: RegistrationComponent },
 	{ path: 'home', component: HomeComponent },
-	{ path: 'meteorology', component: MeteorologyComponent },
-
 	{
 		path: 'new-password/:token',
 		component: NewPasswordComponent,
+	},
+	{
+		path: 'meteorology',
+		component: MeteorologyComponent,
 		canActivate: [AuthGuard],
 	},
-
 	{
 		path: 'home',
 		component: HomeComponent,

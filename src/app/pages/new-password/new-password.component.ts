@@ -12,7 +12,6 @@ import { WindowService } from 'src/app/services/window.service';
 import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 import { Location } from '@angular/common';
 
-
 @Component({
 	selector: 'app-new-password',
 	templateUrl: './new-password.component.html',
@@ -23,19 +22,24 @@ export class NewPasswordComponent implements OnInit {
 	token: string = '';
 	public hide: boolean = true;
 
-	constructor(private router: Router,private route: ActivatedRoute, private windowService: WindowService, private apiService: Marte101ApiService, private location: Location) {}
+	constructor(
+		private router: Router,
+		private route: ActivatedRoute,
+		private windowService: WindowService,
+		private apiService: Marte101ApiService,
+		private location: Location
+	) {}
 
 	ngOnInit() {
-		this.route.url.subscribe(segments => {
-		const urlSegments: string[] = segments.map(segment => segment.path);
-		const token: string = urlSegments[1];
-		this.token = token;
+		this.route.url.subscribe((segments) => {
+			const urlSegments: string[] = segments.map((segment) => segment.path);
+			const token: string = urlSegments[1];
+			this.token = token;
 
-		console.log(urlSegments);
-		this.removeTokenFromUrl();
-		localStorage.setItem('token', token);
-		})
-		
+			console.log(urlSegments);
+			localStorage.setItem('token', token);
+			this.removeTokenFromUrl();
+		});
 	}
 
 	public removeTokenFromUrl() {
@@ -43,7 +47,7 @@ export class NewPasswordComponent implements OnInit {
 		const newUrl = currentUrl.replace(this.token, '');
 		this.location.replaceState(newUrl);
 	}
-	
+
 	/**
 	 * Returns a validator function that checks if the input value contains at least one uppercase letter.
 	 *
@@ -59,25 +63,22 @@ export class NewPasswordComponent implements OnInit {
 	}
 
 	async onSubmit() {
-        const getFormInputsValues = this.newPasswordForm.value as {
-            confirmPassword: string;
-        };
+		const getFormInputsValues = this.newPasswordForm.value as {
+			confirmPassword: string;
+		};
 
-        const token = localStorage.getItem('token');
-		console.log(token)
+		const token = localStorage.getItem('token');
+		console.log(token);
 
-        try {
-            await this.apiService.patchUserNewPassword(
-                token as string,
-                getFormInputsValues.confirmPassword as string
-            );
+		try {
+			await this.apiService.patchUserNewPassword(
+				token as string,
+				getFormInputsValues.confirmPassword as string
+			);
 			this.openSuccessWindow();
 			this.router.navigate(['/login']);
-			
-        
-        } catch (error) {
-            console.log(error);
-        
+		} catch (error) {
+			console.log(error);
 		}
 	}
 
