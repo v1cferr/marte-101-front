@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
+import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 
 @Component({
 	selector: 'app-registration',
@@ -17,8 +18,13 @@ import { WindowService } from 'src/app/services/window.service';
 })
 export class RegistrationComponent {
 	public hide: boolean = true;
+	public windowIsOpen: boolean = false;
 
-	constructor(private router: Router, private windowService: WindowService) {}
+	constructor(
+		private router: Router,
+		private windowService: WindowService,
+		private apiService: Marte101ApiService
+	) {}
 
 	/**
 	 * Returns a validator function that checks if the input contains at least one uppercase letter.
@@ -111,13 +117,32 @@ export class RegistrationComponent {
 		this.router.navigate(['']);
 	}
 
-	/**
-	 * Submit the form.
-	 *
-	 * @param {void} - No parameters needed.
-	 * @return {void} - No return value.
-	 */
-	public onSubmit(): void {
-		return;
+	public async onSubmit() {
+		const getFormInputsValues = this.registrationForm.value as {
+			firstName: string;
+			lastName: string;
+			email: string;
+			confirmPassword: string;
+		};
+
+		try {
+			const response = await this.apiService.postNewUser(
+				getFormInputsValues.firstName as string,
+				getFormInputsValues.lastName as string,
+				getFormInputsValues.email as string,
+				getFormInputsValues.confirmPassword as string
+			);
+
+			if (response) {
+				this.openSuccessWindow();
+
+				setTimeout(() => {
+					this.windowService.closeWindow();
+					this.router.navigate(['']);
+				}, 5000);
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }
