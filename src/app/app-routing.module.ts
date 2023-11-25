@@ -15,6 +15,7 @@ const routes: Routes = [
 	{
 		path: 'new-password/:token',
 		component: NewPasswordComponent,
+		canActivate: [AuthGuard],
 	},
 
 	{

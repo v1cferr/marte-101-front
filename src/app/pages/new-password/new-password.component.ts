@@ -7,10 +7,10 @@ import {
 	AbstractControl,
 	ValidatorFn,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
 import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -23,20 +23,25 @@ export class NewPasswordComponent implements OnInit {
 	token: string = '';
 	public hide: boolean = true;
 
-	constructor(private router: Router,private route: ActivatedRoute, private windowService: WindowService, private apiService: Marte101ApiService) {}
+	constructor(private router: Router,private route: ActivatedRoute, private windowService: WindowService, private apiService: Marte101ApiService, private location: Location) {}
 
 	ngOnInit() {
-
 		this.route.url.subscribe(segments => {
-		
-		const urlSegments = segments.map(segment => segment.path);
+		const urlSegments: string[] = segments.map(segment => segment.path);
+		const token: string = urlSegments[1];
+		this.token = token;
 
 		console.log(urlSegments);
+		this.removeTokenFromUrl();
+		localStorage.setItem('token', token);
+		})
 		
-		localStorage.setItem('token', urlSegments[1]);
+	}
 
-		});	
-    
+	public removeTokenFromUrl() {
+		const currentUrl = this.location.path();
+		const newUrl = currentUrl.replace(this.token, '');
+		this.location.replaceState(newUrl);
 	}
 	
 	/**
@@ -59,18 +64,21 @@ export class NewPasswordComponent implements OnInit {
         };
 
         const token = localStorage.getItem('token');
+		console.log(token)
 
         try {
             await this.apiService.patchUserNewPassword(
-                getFormInputsValues.confirmPassword as string,
-                token as string
+                token as string,
+                getFormInputsValues.confirmPassword as string
             );
+			this.openSuccessWindow();
+			this.router.navigate(['/login']);
+			
         
         } catch (error) {
             console.log(error);
         
-        }
-
+		}
 	}
 
 	/**
