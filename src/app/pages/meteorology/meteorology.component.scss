@@ -1,0 +1,230 @@
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin icon-size {
+	width: 2.625rem;
+	height: 2.625rem;
+	font-size: 2.625rem;
+}
+
+@mixin h2-center-size {
+	font-size: 2.25rem;
+	font-weight: 700;
+}
+
+@mixin p-center-size {
+	font-weight: 300;
+	font-size: 1rem;
+}
+
+@mixin title-days-card-size {
+	font-size: 1.20881rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+@mixin subtitle-days-card-size {
+	font-size: 0.80588rem;
+	font-weight: 300;
+	margin: 0;
+}
+
+$active-color: #ba8e73;
+$title-secondary-color: #ffd2b5;
+$foundation-gray-scale-white: #fff;
+$foundation-gray-scale-black: #000;
+$inactive-send-color: #979797;
+$text-inactive-send-color: #171717;
+$warning-bg-color: #f9d6c7;
+$warning-text-color: #b0683b;
+$divider-color: #d9d9d9;
+$card-border-color: #292929;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: $foundation-gray-scale-white;
+}
+
+.meteorology {
+	background: url(../../../assets/Epic-Sky-03-2.png) no-repeat center center;
+	background-size: cover;
+	height: 100dvh;
+	width: 100dvw;
+
+	.content {
+		@include flex-center;
+		flex-direction: column;
+		padding: 5rem 5rem 0 5rem;
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 7.5rem;
+
+			.title {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				margin-right: 20rem;
+
+				h1 {
+					font-size: 2.5rem;
+					font-weight: 700;
+				}
+
+				p {
+					font-size: 1rem;
+					font-weight: 400;
+				}
+			}
+
+			.arrow-icon {
+				cursor: pointer;
+				color: $title-secondary-color;
+				font-size: 1.75rem;
+				height: 1.75rem;
+				width: 1.75rem;
+				position: absolute;
+				left: -50px;
+				top: 2rem;
+				transform: translateY(-50%);
+			}
+
+			.logout-icon {
+				cursor: pointer;
+				color: $active-color;
+				font-size: 2.1875rem;
+				height: 2.1875rem;
+				width: 2.1875rem;
+			}
+		}
+
+		// Center Container
+		.center {
+			@include flex-center;
+			width: 40.875rem;
+			height: 13.25rem;
+			border-radius: 1.625rem;
+			background: rgba(62, 51, 51, 0.25);
+			gap: 4rem;
+			margin-bottom: 7.5rem;
+
+			// Calendar Container
+			.date {
+				margin-left: -3rem;
+
+				.calendar-icon {
+					@include icon-size;
+					margin-bottom: 1rem;
+				}
+
+				.info {
+					h2 {
+						@include h2-center-size;
+						margin-bottom: 0.75rem;
+					}
+
+					p {
+						@include p-center-size;
+					}
+				}
+			}
+
+			// Temperature Container
+			.temperature {
+				.temperature-icon {
+					@include icon-size;
+					margin-bottom: 1rem;
+				}
+
+				.max-temp {
+					position: relative;
+
+					h2 {
+						@include h2-center-size;
+						color: $title-secondary-color;
+						margin-bottom: 0.75rem;
+					}
+
+					.up-arrow {
+						position: absolute;
+						top: 0.5rem;
+						right: -2rem;
+					}
+				}
+
+				.min-temp {
+					position: relative;
+
+					p {
+						@include p-center-size;
+						color: $title-secondary-color;
+						margin-bottom: 0.75rem;
+					}
+
+					.down-arrow {
+						position: absolute;
+						top: 0;
+						right: 7.75rem;
+					}
+				}
+			}
+		}
+
+		.footer {
+			@include flex-center;
+			flex-wrap: wrap;
+			gap: 1.5rem;
+
+			.card {
+				@include flex-center;
+				flex-direction: column;
+				gap: 0.75rem;
+				width: 9.46925rem;
+				height: 9.72106rem;
+				border-radius: 1.30956rem;
+				border: 0.806px solid $card-border-color;
+
+				.date {
+					@include flex-center;
+					flex-direction: column;
+
+					h2 {
+						@include title-days-card-size;
+					}
+
+					p {
+						@include subtitle-days-card-size;
+					}
+				}
+
+				.divider {
+					width: 80%;
+					height: 0.05038rem;
+					background-color: $divider-color;
+				}
+
+				.temperature {
+					@include flex-center;
+					flex-direction: column;
+
+					h3 {
+						@include title-days-card-size;
+						color: $title-secondary-color;
+					}
+
+					p {
+						@include subtitle-days-card-size;
+						color: $title-secondary-color;
+					}
+				}
+			}
+		}
+	}
+}

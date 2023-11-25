@@ -5,6 +5,7 @@ import { RecoverPasswordComponent } from './pages/recover-password/recover-passw
 import { NewPasswordComponent } from './pages/new-password/new-password.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MeteorologyComponent } from './pages/meteorology/meteorology.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
 	{ path: 'new-password', component: NewPasswordComponent },
 	{ path: 'registration', component: RegistrationComponent },
 	{ path: 'home', component: HomeComponent },
+	{ path: 'meteorology', component: MeteorologyComponent },
 ];
 
 @NgModule({
