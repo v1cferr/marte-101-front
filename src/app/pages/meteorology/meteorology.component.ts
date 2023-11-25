@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
 	selector: 'app-meteorology',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./meteorology.component.scss'],
 })
 export class MeteorologyComponent {
-	constructor(private router: Router) {}
+	constructor(private router: Router, private windowService: WindowService) {}
 
 	/**
 	 * Navigates to the home page.
@@ -25,5 +26,9 @@ export class MeteorologyComponent {
 	 */
 	public goToLogin(): void {
 		this.router.navigate(['']);
+	}
+
+	public openConfirmationWindow(): void {
+		this.windowService.openWindow();
 	}
 }
