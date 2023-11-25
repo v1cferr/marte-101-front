@@ -43,11 +43,15 @@ export class Marte101ApiService {
 	}
 
 	// 3- POST | `/users/recover-password` | Rota para redefinir a senha do usuário.
-	postRecoverPassword(): Observable<{ email: string }> {
-		return this.http.post<{ email: string }>(
-			`${this.apiUrl}/users/recover-password`,
-			{}
-		);
+	postRecoverPassword(
+		email:string
+		): Promise<any> {
+		return this.http
+		.post( `${this.apiUrl}/users/recover-password`,
+			{
+				email,
+		})
+		.toPromise();
 	}
 
 	// 4- POST | `/users/new-user` | Rota para criar novo usuário.
