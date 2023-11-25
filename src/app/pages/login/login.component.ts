@@ -24,6 +24,8 @@ export class LoginComponent {
 
 	public goToHome(): void {
 		this.windowService.closeWindow();
+	}
+
 	/**
 	 * Submits the form and navigates to the home page.
 	 *
@@ -31,5 +33,14 @@ export class LoginComponent {
 	 */
 	public onSubmit(): void {
 		this.router.navigate(['home']);
+	}
+
+	/**
+	 * Navigates to the registration page.
+	 *
+	 * @return {void} The function does not return a value.
+	 */
+	public goToRegistration(): void {
+		this.router.navigate(['registration']);
 	}
 }

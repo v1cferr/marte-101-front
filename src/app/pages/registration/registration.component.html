@@ -226,7 +226,12 @@
 		</form>
 
 		<div class="buttons">
-			<button mat-flat-button class="cancel" type="button">
+			<button
+				mat-flat-button
+				class="cancel"
+				type="button"
+				(click)="goToLogin()"
+			>
 				<span>Cancelar</span>
 			</button>
 			<button
@@ -235,6 +240,7 @@
 				type="submit"
 				[disabled]="!registrationForm.valid"
 				(click)="onSubmit()"
+				(click)="openSuccessWindow()"
 			>
 				<span>Salvar</span>
 			</button>

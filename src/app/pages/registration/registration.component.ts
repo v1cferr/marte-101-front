@@ -7,6 +7,8 @@ import {
 	AbstractControl,
 	ValidatorFn,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
 	selector: 'app-registration',
@@ -15,6 +17,8 @@ import {
 })
 export class RegistrationComponent {
 	public hide: boolean = true;
+
+	constructor(private router: Router, private windowService: WindowService) {}
 
 	/**
 	 * Returns a validator function that checks if the input contains at least one uppercase letter.
@@ -98,6 +102,14 @@ export class RegistrationComponent {
 			validators: this.passwordMatchValidator(),
 		}
 	);
+
+	public openSuccessWindow(): void {
+		this.windowService.openWindow();
+	}
+
+	public goToLogin(): void {
+		this.router.navigate(['']);
+	}
 
 	/**
 	 * Submit the form.
