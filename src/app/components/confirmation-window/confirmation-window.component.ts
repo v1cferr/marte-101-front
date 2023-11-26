@@ -46,6 +46,7 @@ export class ConfirmationWindowComponent {
 	 */
 	public goToLogin(): void {
 		localStorage.removeItem('token');
+		localStorage.removeItem('user');
 
 		this.closeWindow();
 		this.router.navigate(['']);

@@ -245,6 +245,10 @@
 			</button>
 		</div>
 
+		<mat-error *ngIf="showError === true" class="error-message"
+			><span>Solicitação inválida</span></mat-error
+		>
+
 		<app-success-window
 			[description]="'Cadastro preenchido com sucesso'"
 		></app-success-window>

@@ -36,7 +36,6 @@ export class NewPasswordComponent implements OnInit {
 			const token: string = urlSegments[1];
 			this.token = token;
 
-			console.log(urlSegments);
 			localStorage.setItem('token', token);
 			this.removeTokenFromUrl();
 		});

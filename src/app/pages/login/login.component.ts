@@ -11,6 +11,7 @@ import { WindowService } from 'src/app/services/window.service';
 	styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+	public showError: boolean = false;
 	constructor(
 		private router: Router,
 		private windowService: WindowService,
@@ -43,7 +44,7 @@ export class LoginComponent {
 		rememberMe: new FormControl(false) as FormControl<boolean>,
 	});
 
-	async onSubmit() {
+	public async onSubmit() {
 		const getFormInputsValues = this.loginForm.value as {
 			email: string;
 			password: string;
@@ -69,7 +70,7 @@ export class LoginComponent {
 
 			console.log(response);
 		} catch (error) {
-			console.log(error);
+			this.showError = true;
 		}
 	}
 }

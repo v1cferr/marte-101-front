@@ -17,6 +17,7 @@ import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 	styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
+	public showError: boolean = false;
 	public hide: boolean = true;
 	public windowIsOpen: boolean = false;
 
@@ -139,10 +140,11 @@ export class RegistrationComponent {
 				setTimeout(() => {
 					this.windowService.closeWindow();
 					this.router.navigate(['']);
-				}, 5000);
+				}, 20000);
 			}
 		} catch (error) {
 			console.log(error);
+			this.showError = true;
 		}
 	}
 }

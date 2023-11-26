@@ -57,6 +57,9 @@
 				</div>
 			</div>
 
+			<mat-error *ngIf="showError === true" class="error-message"
+				>Erro de autenticação: Credenciais inválidas</mat-error
+			>
 			<button
 				mat-flat-button
 				class="submit"

@@ -16,6 +16,7 @@ export class MeteorologyComponent {
 	 * @return {void} No return value.
 	 */
 	public goToHome(): void {
+		this.windowService.closeWindow();
 		this.router.navigate(['home']);
 	}
 

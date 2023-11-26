@@ -84,6 +84,13 @@ $text-inactive-submit-color: #171717;
 			transition: border-color 0.2s ease-in-out;
 		}
 
+		.error-message {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0.5rem 0 -1rem 0;
+		}
+
 		.email {
 			width: 32.6875rem;
 			height: 4.5rem;

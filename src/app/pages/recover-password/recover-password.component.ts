@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,6 +11,8 @@ import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 	styleUrls: ['./recover-password.component.scss'],
 })
 export class RecoverPasswordComponent {
+	public showError: boolean = false;
+
 	public recoverForm = new FormGroup({
 		email: new FormControl('', [Validators.required, Validators.email]),
 	});
@@ -55,6 +58,7 @@ export class RecoverPasswordComponent {
 			console.log();
 		} catch (error) {
 			console.log(error);
+			this.showError = true;
 		}
 	}
 }
