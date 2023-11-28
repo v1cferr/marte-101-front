@@ -22,12 +22,19 @@ export class LoginComponent {
 		]),
 	});
 
+	/**
+	 * Goes to the home page.
+	 *
+	 * @return {void} None
+	 */
 	public goToHome(): void {
 		this.windowService.closeWindow();
+	}
+
 	/**
-	 * Submits the form and navigates to the home page.
+	 * A description of the entire function.
 	 *
-	 * @return {void} - Does not return a value.
+	 * @return {void} - No return value
 	 */
 	public onSubmit(): void {
 		this.router.navigate(['home']);

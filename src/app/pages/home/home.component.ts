@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-	constructor(private windowService: WindowService) {}
+	constructor(private windowService: WindowService, private router: Router) {}
 
 	/**
 	 * Opens a confirmation window.
@@ -18,8 +18,7 @@ export class HomeComponent {
 	 */
 	public openConfirmationWindow(): void {
 		this.windowService.openWindow();
-
-	constructor(private router: Router) {}
+	}
 
 	/**
 	 * Navigates to the meteorology page.
@@ -28,6 +27,5 @@ export class HomeComponent {
 	 */
 	public goToMeteorology(): void {
 		this.router.navigate(['meteorology']);
-
 	}
 }
