@@ -36,12 +36,25 @@ export class MeteorologyComponent implements OnInit {
 	}
 
 	/**
-	 * Retrieves meteorology soles by calling the meteorology service's getMeteorologyData method and subscribing to the data.
+	 * Retrieves the token from the local storage.
 	 *
-	 * @return {type} description of return value
+	 * @private
+	 * @return {string} The token value stored in the local storage, or an empty string if no token is found.
+	 */
+	private getToken(): string {
+		return localStorage.getItem('token') || '';
+	}
+
+	/**
+	 * Retrieve meteorology soles.
+	 *
+	 * @private
+	 * @returns {void}
 	 */
 	private getMeteorologySoles(): void {
-		this.meteorologyService.getMeteorologyData().subscribe((data) => {
+		const token = this.getToken();
+
+		this.meteorologyService.getMeteorologyData(token).subscribe((data) => {
 			this.sols = data;
 		});
 	}

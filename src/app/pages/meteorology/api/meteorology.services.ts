@@ -1,24 +1,28 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class MeteorologyService {
-	private apiUrl: string = 'http://localhost:5555';
+	private apiUrl: string = 'http://localhost:4444';
 
 	constructor(private http: HttpClient) {}
 
 	/**
-	 * Retrieves meteorology data from the API.
+	 * Retrieves meteorology data using the provided token.
 	 *
-	 * @return {Observable<any[]>} An observable emitting an array of meteorology data.
+	 * @param {string} token - The token used for authentication.
+	 * @return {Observable<any[]>} An observable that emits an array of meteorology data.
 	 */
-	getMeteorologyData(): Observable<any[]> {
-		const endpoint = `${this.apiUrl}/soles`;
-		return this.http.get<any[]>(endpoint);
+	getMeteorologyData(token: string): Observable<any[]> {
+		const endpoint = `${this.apiUrl}/metereology/soles`;
+		const authorization = new HttpHeaders({
+			Authorization: `Bearer ${token}`,
+		});
+		return this.http.get<any[]>(endpoint, { headers: authorization });
 	}
 }

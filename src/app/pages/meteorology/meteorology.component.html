@@ -25,7 +25,7 @@
 				<div class="info">
 					<h2 class="sol">SOL {{ sols[0]?.sol }}</h2>
 					<p class="terrestrial">
-						{{ sols[0]?.terrestrial_date | date : "dd MMMM" }}
+						{{ sols[0]?.terrestrial_date }}
 					</p>
 				</div>
 			</div>
@@ -57,10 +57,24 @@
 		<footer class="footer">
 			<section class="first card">
 				<div class="date">
-					<h2 class="sol">SOL {{ sols[1]?.sol }}</h2>
+					<h2 class="sol">SOL {{ sols[0]?.sol }}</h2>
 					<p class="terrestrial">
-						{{ sols[1]?.terrestrial_date | date : "dd MMMM" }}
+						{{ sols[0]?.terrestrial_date }}
 					</p>
+				</div>
+
+				<div class="divider"></div>
+
+				<div class="temperature">
+					<h3 class="max">Máx.: {{ sols[0]?.max_temp }}° F</h3>
+					<p class="min">Mín.: {{ sols[0]?.min_temp }}° F</p>
+				</div>
+			</section>
+
+			<section class="second card">
+				<div class="date">
+					<h2 class="sol">SOL {{ sols[1]?.sol }}</h2>
+					<p class="date">{{ sols[1]?.terrestrial_date }}</p>
 				</div>
 
 				<div class="divider"></div>
@@ -71,10 +85,12 @@
 				</div>
 			</section>
 
-			<section class="second card">
+			<section class="third card">
 				<div class="date">
 					<h2 class="sol">SOL {{ sols[2]?.sol }}</h2>
-					<p class="date">{{ sols[2]?.terrestrial_date | date : "dd MMMM" }}</p>
+					<p class="date">
+						{{ sols[2]?.terrestrial_date }}
+					</p>
 				</div>
 
 				<div class="divider"></div>
@@ -85,12 +101,10 @@
 				</div>
 			</section>
 
-			<section class="third card">
+			<section class="fourth card">
 				<div class="date">
 					<h2 class="sol">SOL {{ sols[3]?.sol }}</h2>
-					<p class="date">
-						{{ sols[3]?.terrestrial_date | date : "dd MMMM" }}
-					</p>
+					<p class="date">{{ sols[3]?.terrestrial_date }}</p>
 				</div>
 
 				<div class="divider"></div>
@@ -101,10 +115,10 @@
 				</div>
 			</section>
 
-			<section class="fourth card">
+			<section class="fifth card">
 				<div class="date">
 					<h2 class="sol">SOL {{ sols[4]?.sol }}</h2>
-					<p class="date">{{ sols[4]?.terrestrial_date | date : "dd MMMM" }}</p>
+					<p class="date">{{ sols[4]?.terrestrial_date }}</p>
 				</div>
 
 				<div class="divider"></div>
@@ -115,10 +129,10 @@
 				</div>
 			</section>
 
-			<section class="fifth card">
+			<section class="sixth card">
 				<div class="date">
 					<h2 class="sol">SOL {{ sols[5]?.sol }}</h2>
-					<p class="date">{{ sols[5]?.terrestrial_date | date : "dd MMMM" }}</p>
+					<p class="date">{{ sols[5]?.terrestrial_date }}</p>
 				</div>
 
 				<div class="divider"></div>
@@ -129,10 +143,10 @@
 				</div>
 			</section>
 
-			<section class="sixth card">
+			<section class="seventh card">
 				<div class="date">
 					<h2 class="sol">SOL {{ sols[6]?.sol }}</h2>
-					<p class="date">{{ sols[6]?.terrestrial_date | date : "dd MMMM" }}</p>
+					<p class="date">{{ sols[6]?.terrestrial_date }}</p>
 				</div>
 
 				<div class="divider"></div>
@@ -140,20 +154,6 @@
 				<div class="temperature">
 					<h3 class="max">Máx.: {{ sols[6]?.max_temp }}° F</h3>
 					<p class="min">Mín.: {{ sols[6]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="seventh card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[7]?.sol }}</h2>
-					<p class="date">{{ sols[7]?.terrestrial_date | date : "dd MMMM" }}</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[7]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[7]?.min_temp }}° F</p>
 				</div>
 			</section>
 		</footer>
