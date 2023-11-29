@@ -10,7 +10,9 @@
 				<p>Veja abaixo as temperaturas registradas até o momento.</p>
 			</div>
 
-			<mat-icon (click)="goToLogin()" class="logout-icon">exit_to_app</mat-icon>
+			<mat-icon (click)="openConfirmationWindow()" class="logout-icon"
+				>exit_to_app</mat-icon
+			>
 		</header>
 		<main class="center">
 			<div class="date">
@@ -155,5 +157,7 @@
 				</div>
 			</section>
 		</footer>
+
+		<app-confirmation-window></app-confirmation-window>
 	</section>
 </main>

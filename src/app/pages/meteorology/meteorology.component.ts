@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { WindowService } from 'src/app/services/window.service';
 import { MeteorologyService } from './api/meteorology.services';
 
 @Component({
@@ -10,6 +12,7 @@ import { MeteorologyService } from './api/meteorology.services';
 	templateUrl: './meteorology.component.html',
 	styleUrls: ['./meteorology.component.scss'],
 })
+
 export class MeteorologyComponent implements OnInit {
 	public sols: any[] = [];
 
@@ -21,7 +24,8 @@ export class MeteorologyComponent implements OnInit {
 	 */
 	constructor(
 		private router: Router,
-		private meteorologyService: MeteorologyService
+		private meteorologyService: MeteorologyService,
+    private windowService: WindowService
 	) {}
 
 	/**
@@ -47,18 +51,28 @@ export class MeteorologyComponent implements OnInit {
 	/**
 	 * Navigates to the home page.
 	 *
-	 * @return {void} No return value.
+	 * @return {void} This function does not return anything.
 	 */
 	public goToHome(): void {
+		this.windowService.closeWindow();
 		this.router.navigate(['home']);
 	}
 
 	/**
 	 * Navigates to the login page.
 	 *
-	 * @return {void}
+	 * @return {void} There is no return value.
 	 */
 	public goToLogin(): void {
 		this.router.navigate(['']);
+	}
+
+	/**
+	 * Opens the confirmation window.
+	 *
+	 * @return {void} - No return value.
+	 */
+	public openConfirmationWindow(): void {
+		this.windowService.openWindow();
 	}
 }
