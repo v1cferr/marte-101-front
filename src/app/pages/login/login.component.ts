@@ -32,9 +32,9 @@ export class LoginComponent {
 	}
 
 	/**
-	 * A description of the entire function.
+	 * Navigates to the 'home' route when the form is submitted.
 	 *
-	 * @return {void} - No return value
+	 * @return {void} None
 	 */
 	public onSubmit(): void {
 		this.router.navigate(['home']);

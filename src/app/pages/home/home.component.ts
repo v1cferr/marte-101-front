@@ -14,7 +14,7 @@ export class HomeComponent {
 	/**
 	 * Opens a confirmation window.
 	 *
-	 * @return {void} None
+	 * @return {void} - No return value.
 	 */
 	public openConfirmationWindow(): void {
 		this.windowService.openWindow();
@@ -23,7 +23,7 @@ export class HomeComponent {
 	/**
 	 * Navigates to the meteorology page.
 	 *
-	 * @return {void}
+	 * @return {void} - No return value
 	 */
 	public goToMeteorology(): void {
 		this.router.navigate(['meteorology']);
