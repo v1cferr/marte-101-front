@@ -105,73 +105,110 @@ $card-border-color: #292929;
 			}
 		}
 
-		// Center Container
-		.center {
-			@include flex-center;
-			width: 40.875rem;
-			height: 13.25rem;
-			border-radius: 1.625rem;
-			background: rgba(62, 51, 51, 0.25);
-			gap: 4rem;
+		// Main Container
+		.main {
 			margin-bottom: 7.5rem;
+			display: flex;
+			gap: 5rem;
 
-			// Calendar Container
-			.date {
-				margin-left: -3rem;
+			// Center Container
+			.center {
+				@include flex-center;
+				// width: 40.875rem;
+				// height: 13.25rem;
+				border-radius: 1.625rem;
+				background: rgba(62, 51, 51, 0.25);
+				gap: 4rem;
+				padding: 2rem 3.5rem 2rem 2rem;
 
-				.calendar-icon {
-					@include icon-size;
-					margin-bottom: 1rem;
-				}
-
-				.info {
-					h2 {
-						@include h2-center-size;
-						margin-bottom: 0.75rem;
+				// Calendar Container
+				.date {
+					.calendar-icon {
+						@include icon-size;
+						margin-bottom: 1rem;
 					}
 
-					p {
-						@include p-center-size;
+					.info {
+						h2 {
+							@include h2-center-size;
+							margin-bottom: 0.75rem;
+						}
+
+						p {
+							@include p-center-size;
+						}
+					}
+				}
+
+				// Temperature Container
+				.temperature {
+					.temperature-icon {
+						@include icon-size;
+						margin-bottom: 1rem;
+					}
+
+					.max-temp {
+						position: relative;
+
+						h2 {
+							@include h2-center-size;
+							color: $title-secondary-color;
+							margin-bottom: 0.75rem;
+						}
+
+						.up-arrow {
+							position: absolute;
+							top: 0.5rem;
+							right: -2rem;
+						}
+					}
+
+					.min-temp {
+						position: relative;
+
+						p {
+							@include p-center-size;
+							color: $title-secondary-color;
+							margin-bottom: 0.75rem;
+						}
+
+						.down-arrow {
+							position: absolute;
+							top: 0;
+							right: 7.75rem;
+						}
 					}
 				}
 			}
 
-			// Temperature Container
-			.temperature {
-				.temperature-icon {
-					@include icon-size;
-					margin-bottom: 1rem;
-				}
+			// Right Container
+			.right {
+				@include flex-center;
+				flex-direction: column;
+				border-radius: 1.625rem;
+				background: rgba(62, 51, 51, 0.25);
+				gap: 4rem;
+				padding: 2rem;
 
-				.max-temp {
-					position: relative;
+				.content-right {
+					@include flex-center;
+					gap: 0.75rem;
 
-					h2 {
-						@include h2-center-size;
-						color: $title-secondary-color;
-						margin-bottom: 0.75rem;
+					.thermometer-icon {
+						width: 7.25rem;
+						height: 7.25rem;
+						font-size: 7.25rem;
 					}
 
-					.up-arrow {
-						position: absolute;
-						top: 0.5rem;
-						right: -2rem;
-					}
-				}
+					.info-data {
+						font-size: 1.25rem;
+						font-weight: 700;
 
-				.min-temp {
-					position: relative;
-
-					p {
-						@include p-center-size;
-						color: $title-secondary-color;
-						margin-bottom: 0.75rem;
-					}
-
-					.down-arrow {
-						position: absolute;
-						top: 0;
-						right: 7.75rem;
+						p {
+							span {
+								color: $title-secondary-color;
+							}
+						}
 					}
 				}
 			}

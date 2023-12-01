@@ -14,46 +14,74 @@
 				>exit_to_app</mat-icon
 			>
 		</header>
-		<main class="center">
-			<div class="date">
-				<img
-					src="../../../assets/icons/calendar-outline.svg"
-					alt="Ícone de calendário"
-					class="calendar-icon"
-				/>
-
-				<div class="info">
-					<h2 class="sol">SOL {{ sols[0]?.sol }}</h2>
-					<p class="terrestrial">
-						{{ sols[0]?.terrestrial_date }}
-					</p>
-				</div>
-			</div>
-
-			<section class="temperature">
-				<img
-					src="../../../assets/icons/thermometer-outline.svg"
-					alt="Ícone de termômetro"
-					class="temperature-icon"
-				/>
-				<div class="max-temp">
-					<h2 class="max">Máx.: {{ sols[0]?.max_temp }}° F | C</h2>
+		<main class="main">
+			<section class="center">
+				<div class="date">
 					<img
-						src="../../../assets/icons/arrow-up.svg"
-						alt="Seta para cima"
-						class="up-arrow"
+						src="../../../assets/icons/calendar-outline.svg"
+						alt="Ícone de calendário"
+						class="calendar-icon"
 					/>
+
+					<div class="info">
+						<h2 class="sol">SOL {{ sols[0]?.sol }}</h2>
+						<p class="terrestrial">
+							{{ sols[0]?.terrestrial_date }}
+						</p>
+					</div>
 				</div>
-				<div class="min-temp">
-					<p class="min">Mín.: {{ sols[0]?.min_temp }}° F | C</p>
+
+				<section class="temperature">
 					<img
-						src="../../../assets/icons/arrow-down.svg"
-						alt="Seta para baixo"
-						class="down-arrow"
+						src="../../../assets/icons/thermometer-outline.svg"
+						alt="Ícone de termômetro"
+						class="temperature-icon"
 					/>
-				</div>
+					<div class="max-temp">
+						<h2 class="max">Máx.: {{ sols[0]?.max_temp }}° F | C</h2>
+						<img
+							src="../../../assets/icons/arrow-up.svg"
+							alt="Seta para cima"
+							class="up-arrow"
+						/>
+					</div>
+					<div class="min-temp">
+						<p class="min">Mín.: {{ sols[0]?.min_temp }}° F | C</p>
+						<img
+							src="../../../assets/icons/arrow-down.svg"
+							alt="Seta para baixo"
+							class="down-arrow"
+						/>
+					</div>
+				</section>
+			</section>
+
+			<section class="right">
+				<section class="content-right">
+					<img
+						src="../../../assets/icons/thermometer.svg"
+						alt="Ícone do segundo termômetro"
+						class="thermometer-icon"
+					/>
+
+					<div class="info-data">
+						<p class="pressure">
+							Pressão atmosférica: <span>{{ sols[0]?.pressure }}</span>
+						</p>
+						<p class="mars-uv">
+							Radiação UV: <span>{{ sols[0]?.mars_uv }}</span>
+						</p>
+						<p class="sunrise">
+							Nascer do sol: <span>{{ sols[0]?.sunrise }}</span>
+						</p>
+						<p class="sunset">
+							Pôr do sol: <span>{{ sols[0]?.sunset }}</span>
+						</p>
+					</div>
+				</section>
 			</section>
 		</main>
+
 		<footer class="footer">
 			<section class="first card">
 				<div class="date">
