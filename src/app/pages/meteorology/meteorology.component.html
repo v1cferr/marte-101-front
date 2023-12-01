@@ -83,107 +83,15 @@
 		</main>
 
 		<footer class="footer">
-			<section class="first card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[0]?.sol }}</h2>
-					<p class="terrestrial">
-						{{ sols[0]?.terrestrial_date }}
-					</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[0]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[0]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="second card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[1]?.sol }}</h2>
-					<p class="date">{{ sols[1]?.terrestrial_date }}</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[1]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[1]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="third card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[2]?.sol }}</h2>
-					<p class="date">
-						{{ sols[2]?.terrestrial_date }}
-					</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[2]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[2]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="fourth card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[3]?.sol }}</h2>
-					<p class="date">{{ sols[3]?.terrestrial_date }}</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[3]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[3]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="fifth card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[4]?.sol }}</h2>
-					<p class="date">{{ sols[4]?.terrestrial_date }}</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[4]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[4]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="sixth card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[5]?.sol }}</h2>
-					<p class="date">{{ sols[5]?.terrestrial_date }}</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[5]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[5]?.min_temp }}° F</p>
-				</div>
-			</section>
-
-			<section class="seventh card">
-				<div class="date">
-					<h2 class="sol">SOL {{ sols[6]?.sol }}</h2>
-					<p class="date">{{ sols[6]?.terrestrial_date }}</p>
-				</div>
-
-				<div class="divider"></div>
-
-				<div class="temperature">
-					<h3 class="max">Máx.: {{ sols[6]?.max_temp }}° F</h3>
-					<p class="min">Mín.: {{ sols[6]?.min_temp }}° F</p>
-				</div>
-			</section>
+			<ng-container *ngFor="let sol of sols.slice(1, 15); let i = index">
+				<app-meteorology-card
+					[class]="'card-' + (i + 1)"
+					[sol]="sol?.sol"
+					[terrestrial_date]="sol?.terrestrial_date"
+					[max_temp]="sol?.max_temp"
+					[min_temp]="sol?.min_temp"
+				></app-meteorology-card>
+			</ng-container>
 		</footer>
 
 		<app-confirmation-window></app-confirmation-window>
