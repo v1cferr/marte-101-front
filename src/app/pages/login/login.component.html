@@ -57,6 +57,9 @@
 				</div>
 			</div>
 
+			<mat-error *ngIf="showError === true" class="error-message"
+				>Erro de autenticação: Credenciais inválidas</mat-error
+			>
 			<button
 				mat-flat-button
 				class="submit"
@@ -67,6 +70,15 @@
 			>
 				<span>Entrar</span>
 			</button>
+
+			<div class="registration">
+				<span
+					tabindex="0"
+					(click)="goToRegistration()"
+					(keydown)="goToRegistration()"
+					>Ainda não é cadastrado?</span
+				>
+			</div>
 		</form>
 	</div>
 </section>

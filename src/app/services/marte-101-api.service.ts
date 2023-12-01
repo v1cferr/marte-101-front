@@ -9,7 +9,6 @@ export class Marte101ApiService {
 	private apiUrl: string = 'http://localhost:4444';
 
 	constructor(private http: HttpClient) {}
-
 	/**
 	 * Sends a POST request to the user login endpoint.
 	 *
