@@ -9,7 +9,6 @@ export class Marte101ApiService {
 	private apiUrl: string = 'http://localhost:4444';
 
 	constructor(private http: HttpClient) {}
-	
 	/**
 	 * Sends a POST request to the user login endpoint.
 	 *
@@ -22,6 +21,7 @@ export class Marte101ApiService {
 		email: string,	
 		password: string,
 		rememberMe: boolean
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): Promise<any> {
 		return this.http
 			.post(`http://localhost:4444/users/login`, {
@@ -38,6 +38,7 @@ export class Marte101ApiService {
 	 * @param {string} token - The user token to be validated.
 	 * @return {Promise<any>} A promise that resolves with the validation result.
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	postUserTokenValidation(token: string): Promise<any> {
 		return this.http
 			.post<true>(`${this.apiUrl}/users/token-validation`, {
@@ -46,4 +47,20 @@ export class Marte101ApiService {
 			.toPromise();
 	}
 
+	/**
+	 * Sends a PATCH request to the server to update the user's password.
+	 *
+	 * @param {string} token - The token for authentication.
+	 * @param {string} password - The new password to be set.
+	 * @return {Promise<any>} - A promise that resolves with the server's response.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	patchUserNewPassword(token: string, password: string): Promise<any> {
+		return this.http
+			.patch('http://localhost:4444/users/password-change', {
+				token,
+				password,
+			})
+			.toPromise();
+	}
 }
