@@ -63,4 +63,19 @@ export class Marte101ApiService {
 			})
 			.toPromise();
 	}
+
+	/**
+	 * Sends a request to recover the user's password.
+	 *
+	 * @param {string} email - The email of the user.
+	 * @return {Promise<any>} - A promise that resolves with the response from the server.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	postRecoverPassword(email: string): Promise<any> {
+		return this.http
+			.post(`${this.apiUrl}/users/recover-password`, {
+				email,
+			})
+			.toPromise();
+	}
 }

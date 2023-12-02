@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
+import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 
 @Component({
 	selector: 'app-recover-password',
@@ -9,11 +11,17 @@ import { WindowService } from 'src/app/services/window.service';
 	styleUrls: ['./recover-password.component.scss'],
 })
 export class RecoverPasswordComponent {
+	public showError: boolean = false;
+
 	public recoverForm = new FormGroup({
 		email: new FormControl('', [Validators.required, Validators.email]),
 	});
 
-	constructor(private router: Router, private windowService: WindowService) {}
+	constructor(
+		private router: Router,
+		private windowService: WindowService,
+		private apiService: Marte101ApiService
+	) {}
 
 	/**
 	 * Navigates to the login page.
@@ -34,11 +42,22 @@ export class RecoverPasswordComponent {
 	}
 
 	/**
-	 * Submits the email form.
+	 * Submits an email address for password recovery.
 	 *
-	 * @return {void}
+	 * @return {Promise<void>} A promise that resolves when the email is submitted successfully.
 	 */
-	public submitEmail(): void {
-		return;
+	public async submitEmail(): Promise<void> {
+		const getEmail = this.recoverForm.value as {
+			email: string;
+		};
+
+		try {
+			await this.apiService.postRecoverPassword(getEmail.email as string);
+			this.openSuccessWindow();
+
+			console.log();
+		} catch (error) {
+			this.showError = true;
+		}
 	}
 }
