@@ -9,7 +9,7 @@
 	<div class="divider"></div>
 
 	<div class="temperature">
-		<h3 class="max">Máx.: {{ max_temp }}° F</h3>
-		<p class="min">Mín.: {{ min_temp }}° F</p>
+		<h3 class="max">Máx.: {{ max_temp }}° {{ inCelsius ? "C" : "F" }}</h3>
+		<p class="min">Mín.: {{ min_temp }}° {{ inCelsius ? "C" : "F" }}</p>
 	</div>
 </section>

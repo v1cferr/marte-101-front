@@ -151,9 +151,38 @@ $card-border-color: #292929;
 						position: relative;
 
 						h2 {
+							position: relative;
 							@include h2-center-size;
 							color: $title-secondary-color;
 							margin-bottom: 0.75rem;
+
+							.fahrenheit,
+							.celsius {
+								cursor: pointer;
+								color: $title-secondary-color;
+
+								&:hover {
+									color: $active-color;
+								}
+
+								&.active {
+									color: $foundation-gray-scale-white;
+								}
+							}
+						}
+
+						.underline {
+							position: absolute;
+							height: 1.25px;
+							width: 25px;
+							background-color: $foundation-gray-scale-white;
+							bottom: -6px;
+							right: 3.375rem;
+							transition: right 0.3s ease;
+
+							&.active {
+								right: 0;
+							}
 						}
 
 						.up-arrow {
@@ -167,6 +196,7 @@ $card-border-color: #292929;
 						position: relative;
 
 						p {
+							position: relative;
 							@include p-center-size;
 							color: $title-secondary-color;
 							margin-bottom: 0.75rem;
