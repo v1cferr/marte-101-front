@@ -5,7 +5,7 @@
 			<h1>Novo cadastro</h1>
 		</div>
 
-		<form (ngSubmit)="onSubmit()" [formGroup]="registrationForm" class="form">
+		<form [formGroup]="registrationForm" class="form">
 			<div class="left-inputs">
 				<mat-form-field
 					class="firstName"
@@ -226,7 +226,12 @@
 		</form>
 
 		<div class="buttons">
-			<button mat-flat-button class="cancel" type="button">
+			<button
+				mat-flat-button
+				class="cancel"
+				type="button"
+				(click)="goToLogin()"
+			>
 				<span>Cancelar</span>
 			</button>
 			<button
@@ -239,5 +244,13 @@
 				<span>Salvar</span>
 			</button>
 		</div>
+
+		<mat-error *ngIf="showError === true" class="error-message"
+			><span>Solicitação inválida</span></mat-error
+		>
+
+		<app-success-window
+			[description]="'Cadastro preenchido com sucesso'"
+		></app-success-window>
 	</section>
 </main>
