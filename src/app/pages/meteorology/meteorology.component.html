@@ -105,7 +105,9 @@
 		</main>
 
 		<footer class="footer">
-			<ng-container *ngFor="let sol of sols.slice(1, 15); let i = index">
+			<!-- Original (14 Cards):
+			<ng-container *ngFor="let sol of sols.slice(1, 15); let i = index"> -->
+			<ng-container *ngFor="let sol of sols.slice(1, 9); let i = index">
 				<app-meteorology-card
 					[class]="'card-' + (i + 1)"
 					[sol]="sol?.sol"
@@ -113,6 +115,10 @@
 					[max_temp]="convertTemperature(sol?.max_temp)"
 					[min_temp]="convertTemperature(sol?.min_temp)"
 					[inCelsius]="inCelsius"
+					[pressure]="sol?.pressure"
+					[mars_uv]="sol?.mars_uv"
+					[sunrise]="sol?.sunrise"
+					[sunset]="sol?.sunset"
 				></app-meteorology-card>
 			</ng-container>
 		</footer>

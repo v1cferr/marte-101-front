@@ -12,9 +12,15 @@ import { MatCardModule } from '@angular/material/card';
 export class MeteorologyCardComponent {
 	@Input() sol: string = '';
 	@Input() terrestrial_date: string = '';
+
 	@Input() max_temp: string = '';
 	@Input() min_temp: string = '';
 	@Input() inCelsius: boolean = false;
+
+	@Input() pressure: string = '';
+	@Input() mars_uv: string = '';
+	@Input() sunrise: string = '';
+	@Input() sunset: string = '';
 
 	/**
 	 * Converts the temperature value based on the current unit setting.
