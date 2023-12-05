@@ -27,6 +27,7 @@ $title-secondary-color: #ffd2b5;
 	display: flex;
 	gap: 1rem;
 	padding: 1rem;
+	width: 310px;
 
 	.column {
 		.date {
@@ -74,8 +75,8 @@ $title-secondary-color: #ffd2b5;
 
 	.info-data {
 		display: flex;
-		justify-items: start;
-		align-items: start;
+		justify-items: flex-start;
+		align-items: flex-start;
 		flex-direction: column;
 		font-size: 0.80588rem;
 		font-weight: 400;
