@@ -111,6 +111,7 @@
 				*ngFor="let sol of sols.slice(1, 15); let i = index"
 			>
 				<app-meteorology-card
+					*ngIf="i === currentCard"
 					[class]="'card-' + (i + 1)"
 					[sol]="sol?.sol"
 					[terrestrial_date]="sol?.terrestrial_date"
@@ -124,10 +125,18 @@
 				></app-meteorology-card>
 			</ng-container>
 
-			<button class="control prev" (click)="onPreviousClick()">
+			<button
+				class="control prev"
+				(click)="onPreviousClick()"
+				*ngIf="currentCard !== 0"
+			>
 				<span class="arrow left"></span>
 			</button>
-			<button class="control next" (click)="onNextClick()">
+			<button
+				class="control next"
+				(click)="onNextClick()"
+				*ngIf="currentCard !== 13"
+			>
 				<span class="arrow right"></span>
 			</button>
 		</footer>

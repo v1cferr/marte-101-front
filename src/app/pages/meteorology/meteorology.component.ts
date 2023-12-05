@@ -13,7 +13,7 @@ import { MeteorologyService } from './api/meteorology.services';
 export class MeteorologyComponent implements OnInit {
 	public sols: any[] = [];
 	public inCelsius: boolean = false;
-	public currentCard = 0;
+	public currentCard: number = 0;
 
 	/**
 	 * Initializes a new instance of the class.
@@ -131,15 +131,23 @@ export class MeteorologyComponent implements OnInit {
 		this.inCelsius = false;
 	}
 
+	/**
+	 * Handle the click event when the previous button is clicked.
+	 *
+	 * @return {void} This function does not return a value.
+	 */
 	public onPreviousClick(): void {
-		const previous = this.currentCard - 1;
+		const previous: number = this.currentCard - 1;
 		this.currentCard = previous < 0 ? this.sols.length - 1 : previous;
-		console.log('previous clicked, new current slide: ', this.currentCard);
 	}
 
+	/**
+	 * Handles the click event when the "Next" button is clicked.
+	 *
+	 * @return {void} This function does not return anything.
+	 */
 	public onNextClick(): void {
-		const next = this.currentCard + 1;
+		const next: number = this.currentCard + 1;
 		this.currentCard = next >= this.sols.length ? 0 : next;
-		console.log('next clicked, new current slide: ', this.currentCard);
 	}
 }
