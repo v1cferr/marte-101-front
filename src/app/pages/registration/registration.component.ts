@@ -7,6 +7,9 @@ import {
 	AbstractControl,
 	ValidatorFn,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { WindowService } from 'src/app/services/window.service';
+import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 
 @Component({
 	selector: 'app-registration',
@@ -14,7 +17,15 @@ import {
 	styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
+	public showError: boolean = false;
 	public hide: boolean = true;
+	public windowIsOpen: boolean = false;
+
+	constructor(
+		private router: Router,
+		private windowService: WindowService,
+		private apiService: Marte101ApiService
+	) {}
 
 	/**
 	 * Returns a validator function that checks if the input contains at least one uppercase letter.
@@ -100,12 +111,56 @@ export class RegistrationComponent {
 	);
 
 	/**
-	 * Submit the form.
+	 * Opens the success window.
 	 *
-	 * @param {void} - No parameters needed.
-	 * @return {void} - No return value.
+	 * @param {void} - No parameters
+	 * @return {void} - Does not return anything
 	 */
-	public onSubmit(): void {
-		return;
+	public openSuccessWindow(): void {
+		this.windowService.openWindow();
+	}
+
+	/**
+	 * Navigates to the login page.
+	 *
+	 * @param {void} - This function does not accept any parameters.
+	 * @return {void} - This function does not return any value.
+	 */
+	public goToLogin(): void {
+		this.router.navigate(['']);
+	}
+
+	/**
+	 * Submits the form data to create a new user.
+	 *
+	 * @return {Promise<void>} A promise that resolves when the form data is successfully submitted.
+	 */
+	public async onSubmit() {
+		const getFormInputsValues = this.registrationForm.value as {
+			firstName: string;
+			lastName: string;
+			email: string;
+			confirmPassword: string;
+		};
+
+		try {
+			const response = await this.apiService.postNewUser(
+				getFormInputsValues.firstName as string,
+				getFormInputsValues.lastName as string,
+				getFormInputsValues.email as string,
+				getFormInputsValues.confirmPassword as string
+			);
+
+			if (response) {
+				this.openSuccessWindow();
+
+				setTimeout(() => {
+					this.windowService.closeWindow();
+					this.router.navigate(['']);
+				}, 20000);
+			}
+		} catch (error) {
+			this.showError = true;
+		}
 	}
 }

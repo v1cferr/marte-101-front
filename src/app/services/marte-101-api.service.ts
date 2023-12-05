@@ -78,4 +78,30 @@ export class Marte101ApiService {
 			})
 			.toPromise();
 	}
+
+	/**
+	 * Creates a new user with the provided information.
+	 *
+	 * @param {string} firstName - The first name of the user.
+	 * @param {string} lastName - The last name of the user.
+	 * @param {string} email - The email address of the user.
+	 * @param {string} password - The password of the user.
+	 * @return {Promise<any>} - A promise that resolves with the result of the HTTP request.
+	 */
+	postNewUser(
+		firstName: string,
+		lastName: string,
+		email: string,
+		password: string
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	): Promise<any> {
+		return this.http
+			.post(`${this.apiUrl}/users/new-user`, {
+				firstName,
+				lastName,
+				email,
+				password,
+			})
+			.toPromise();
+	}
 }
