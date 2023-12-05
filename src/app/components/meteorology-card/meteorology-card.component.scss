@@ -1,0 +1,93 @@
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin title-days-card-size {
+	font-size: 1.20881rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+@mixin subtitle-days-card-size {
+	font-size: 0.80588rem;
+	font-weight: 300;
+	margin: 0;
+}
+
+$card-border-color: #292929;
+$divider-color: #d9d9d9;
+$title-secondary-color: #ffd2b5;
+
+.card {
+	align-items: center;
+	border: 0.806px solid $card-border-color;
+	border-radius: 1.30956rem;
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
+
+	.column {
+		.date {
+			@include flex-center;
+			flex-direction: column;
+
+			h2 {
+				@include title-days-card-size;
+			}
+
+			p {
+				@include subtitle-days-card-size;
+			}
+		}
+
+		.divider-x {
+			background-color: $divider-color;
+			height: 1px;
+			width: 100%;
+			margin: 0.5rem 0 0.5rem 0;
+		}
+
+		.temperature {
+			@include flex-center;
+			flex-direction: column;
+
+			h3 {
+				@include title-days-card-size;
+				color: $title-secondary-color;
+			}
+
+			p {
+				@include subtitle-days-card-size;
+				color: $title-secondary-color;
+			}
+		}
+	}
+
+	.divider-y {
+		height: 115px;
+		max-height: 100%;
+		width: 1px;
+		background-color: $divider-color;
+	}
+
+	.info-data {
+		display: flex;
+		justify-items: start;
+		align-items: start;
+		flex-direction: column;
+		font-size: 0.80588rem;
+		font-weight: 400;
+		gap: 0.5rem;
+
+		p,
+		span {
+			margin: auto 0;
+
+			span {
+				color: $title-secondary-color;
+			}
+		}
+	}
+}
