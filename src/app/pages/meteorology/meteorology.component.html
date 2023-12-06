@@ -104,11 +104,14 @@
 			</section>
 		</main>
 
-		<footer class="footer">
-			<!-- Original (14 Cards):
-			<ng-container *ngFor="let sol of sols.slice(1, 15); let i = index"> -->
-			<ng-container *ngFor="let sol of sols.slice(1, 9); let i = index">
+		<!-- carousel -->
+		<footer class="footer carousel">
+			<ng-container
+				class="container"
+				*ngFor="let sol of sols.slice(1, 15); let i = index"
+			>
 				<app-meteorology-card
+					*ngIf="i === currentCard"
 					[class]="'card-' + (i + 1)"
 					[sol]="sol?.sol"
 					[terrestrial_date]="sol?.terrestrial_date"
@@ -121,6 +124,21 @@
 					[sunset]="sol?.sunset"
 				></app-meteorology-card>
 			</ng-container>
+
+			<button
+				class="control prev"
+				(click)="onPreviousClick()"
+				*ngIf="currentCard !== 0"
+			>
+				<span class="arrow left"></span>
+			</button>
+			<button
+				class="control next"
+				(click)="onNextClick()"
+				*ngIf="currentCard !== 13"
+			>
+				<span class="arrow right"></span>
+			</button>
 		</footer>
 
 		<app-confirmation-window></app-confirmation-window>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +13,7 @@ import { MeteorologyService } from './api/meteorology.services';
 export class MeteorologyComponent implements OnInit {
 	public sols: any[] = [];
 	public inCelsius: boolean = false;
+	public currentCard: number = 0;
 
 	/**
 	 * Initializes a new instance of the class.
@@ -129,5 +129,25 @@ export class MeteorologyComponent implements OnInit {
 	 */
 	public changeToFahrenheit(): void {
 		this.inCelsius = false;
+	}
+
+	/**
+	 * Handle the click event when the previous button is clicked.
+	 *
+	 * @return {void} This function does not return a value.
+	 */
+	public onPreviousClick(): void {
+		const previous: number = this.currentCard - 1;
+		this.currentCard = previous < 0 ? this.sols.length - 1 : previous;
+	}
+
+	/**
+	 * Handles the click event when the "Next" button is clicked.
+	 *
+	 * @return {void} This function does not return anything.
+	 */
+	public onNextClick(): void {
+		const next: number = this.currentCard + 1;
+		this.currentCard = next >= this.sols.length ? 0 : next;
 	}
 }
