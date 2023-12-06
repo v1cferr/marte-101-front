@@ -196,3 +196,79 @@ $valid-color: #9ad698;
 		}
 	}
 }
+
+$mobile-max-width: 550px;
+
+@media only screen and (max-width: $mobile-max-width) {
+	.registration {
+		.content{
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			margin-bottom: 0.5rem;
+
+			.title {
+				min-width: auto; 
+				height: 3.5rem; 
+				display: flex;
+				margin: 0 0 1rem 0;
+				gap: 0;
+				flex-direction: column;
+				align-items: center;
+	
+				   h1 {
+					  font-size: 1.5rem !important;
+				}
+			}
+	
+			.form {
+				grid-template-columns: 1fr !important;
+				width: 300px !important;
+				align-items: center;
+				gap: 0;
+				margin: auto; 
+	
+				.left-inputs {
+					grid-column: 1 !important;
+					width: auto !important;
+					align-items: center;
+					gap: 0;
+					margin: auto;
+
+					.firstName, .lastName, .email {
+						width: 300px !important;
+						font-size: 1.5rem !important;
+					}
+					 
+				}
+	
+				.right-inputs {
+					grid-column: 1 !important;
+					width: 300px !important;
+					align-items: center;
+					gap: 0;
+					margin: auto; 
+
+					.password, .confirm-password {
+						width: 300px !important;
+						font-size: 1.5rem !important;
+					}
+				}
+			}
+	
+			.buttons {
+				flex-direction: column; 
+				align-items: center;
+				gap: 0;
+				margin: auto;
+			
+				.cancel,
+				.submit {
+				  width: 300px !important; 
+				  margin-bottom: 1rem;
+				}
+			}
+		}
+	}
+}	
+
