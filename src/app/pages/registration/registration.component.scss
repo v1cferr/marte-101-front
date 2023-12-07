@@ -201,6 +201,9 @@ $mobile-max-width: 550px;
 
 @media only screen and (max-width: $mobile-max-width) {
 	.registration {
+		height: auto;
+		width: auto;
+
 		.content{
 			display: flex;
 			flex-direction: column;
