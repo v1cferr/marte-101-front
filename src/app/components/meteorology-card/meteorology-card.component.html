@@ -1,0 +1,34 @@
+<section class="card">
+	<section class="column">
+		<div class="date">
+			<h2 class="sol">SOL {{ sol }}</h2>
+			<p class="terrestrial">
+				{{ terrestrial_date }}
+			</p>
+		</div>
+
+		<div class="divider-x"></div>
+
+		<div class="temperature">
+			<h3 class="max">Máx.: {{ max_temp }}° {{ inCelsius ? "C" : "F" }}</h3>
+			<p class="min">Mín.: {{ min_temp }}° {{ inCelsius ? "C" : "F" }}</p>
+		</div>
+	</section>
+
+	<div class="divider-y"></div>
+
+	<section class="info-data">
+		<p class="pressure">
+			Pressão atmosférica: <span>{{ pressure }}</span>
+		</p>
+		<p class="mars-uv">
+			Radiação UV: <span>{{ mars_uv }}</span>
+		</p>
+		<p class="sunrise">
+			Nascer do sol: <span>{{ sunrise }}</span>
+		</p>
+		<p class="sunset">
+			Pôr do sol: <span>{{ sunset }}</span>
+		</p>
+	</section>
+</section>
