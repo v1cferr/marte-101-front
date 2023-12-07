@@ -226,7 +226,12 @@
 		</form>
 
 		<div class="buttons">
-			<button mat-flat-button class="cancel" type="button">
+			<button
+				mat-flat-button
+				class="cancel"
+				type="button"
+				(click)="goToLogin()"
+			>
 				<span>Cancelar</span>
 			</button>
 			<button
@@ -239,5 +244,13 @@
 				<span>Salvar</span>
 			</button>
 		</div>
+
+		<mat-error *ngIf="showError === true" class="error-message"
+			><span>Solicitação inválida</span></mat-error
+		>
+
+		<app-success-window
+			[description]="'Cadastro preenchido com sucesso'"
+		></app-success-window>
 	</section>
 </main>

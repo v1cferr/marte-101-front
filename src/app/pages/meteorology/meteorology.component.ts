@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +12,8 @@ import { MeteorologyService } from './api/meteorology.services';
 })
 export class MeteorologyComponent implements OnInit {
 	public sols: any[] = [];
+	public inCelsius: boolean = false;
+	public currentCard: number = 0;
 
 	/**
 	 * Initializes a new instance of the class.
@@ -85,5 +86,68 @@ export class MeteorologyComponent implements OnInit {
 	 */
 	public openConfirmationWindow(): void {
 		this.windowService.openWindow();
+	}
+
+	/**
+	 * Converts the temperature value to the desired unit.
+	 *
+	 * @param {string} value - The temperature value to be converted.
+	 * @return {string} - The converted temperature value.
+	 */
+	public convertTemperature(value: string): string {
+		if (this.inCelsius) {
+			return this.convertToCelsius(value);
+		} else {
+			return value;
+		}
+	}
+
+	/**
+	 * Converts a temperature from Fahrenheit to Celsius.
+	 *
+	 * @param {string} fahrenheit - The temperature in Fahrenheit.
+	 * @return {string} - The temperature in Celsius, rounded to the nearest whole number.
+	 */
+	private convertToCelsius(fahrenheit: string): string {
+		const celsius = ((parseFloat(fahrenheit) - 32) * 5) / 9;
+		return celsius.toFixed(0);
+	}
+
+	/**
+	 * Changes the temperature unit to Celsius.
+	 *
+	 * @return {void} - This function does not return a value.
+	 */
+	public changeToCelsius(): void {
+		this.inCelsius = true;
+	}
+
+	/**
+	 * Change the temperature unit from Celsius to Fahrenheit.
+	 *
+	 * @return {void} - This function does not return any value.
+	 */
+	public changeToFahrenheit(): void {
+		this.inCelsius = false;
+	}
+
+	/**
+	 * Handle the click event when the previous button is clicked.
+	 *
+	 * @return {void} This function does not return a value.
+	 */
+	public onPreviousClick(): void {
+		const previous: number = this.currentCard - 1;
+		this.currentCard = previous < 0 ? this.sols.length - 1 : previous;
+	}
+
+	/**
+	 * Handles the click event when the "Next" button is clicked.
+	 *
+	 * @return {void} This function does not return anything.
+	 */
+	public onNextClick(): void {
+		const next: number = this.currentCard + 1;
+		this.currentCard = next >= this.sols.length ? 0 : next;
 	}
 }
