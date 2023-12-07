@@ -192,19 +192,34 @@ export class MeteorologyComponent implements OnInit {
 	}
 
 	/**
-	 * Determines whether the arrow right should be displayed.
+	 * Determines whether the arrow right should be displayed based on the current card and the number of solutions.
 	 *
-	 * @returns {boolean} True if the arrow right should be displayed, false otherwise.
+	 * @return {boolean} true if the arrow right should be displayed, false otherwise.
 	 */
 	public shouldDisplayArrowRight(): boolean {
-		if (this.isSmallScreen && this.currentCard >= 1) {
-			return false;
-		} else if (this.isMediumScreen && this.currentCard >= 2) {
-			return false;
-		} else if (this.isLargeScreen && this.currentCard >= 3) {
+		const size: number = this.calculateSizeBasedOnScreen();
+
+		if (this.currentCard >= this.sols.length - size - 1) {
 			return false;
 		} else {
 			return true;
+		}
+	}
+
+	/**
+	 * Calculates the size based on the screen.
+	 *
+	 * @return {number} The calculated size.
+	 */
+	public calculateSizeBasedOnScreen(): number {
+		if (this.isSmallScreen) {
+			return 1;
+		} else if (this.isMediumScreen) {
+			return 2;
+		} else if (this.isLargeScreen) {
+			return 3;
+		} else {
+			return 0;
 		}
 	}
 }
