@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
 import { MeteorologyService } from './api/meteorology.services';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-meteorology',
@@ -15,6 +17,11 @@ export class MeteorologyComponent implements OnInit {
 	public inCelsius: boolean = false;
 	public currentCard: number = 0;
 
+	public isSmallScreen: boolean = false;
+	public isMediumScreen: boolean = false;
+	public isLargeScreen: boolean = false;
+	public breakpointSubscription: Subscription | undefined;
+
 	/**
 	 * Initializes a new instance of the class.
 	 *
@@ -24,7 +31,8 @@ export class MeteorologyComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private meteorologyService: MeteorologyService,
-		private windowService: WindowService
+		private windowService: WindowService,
+		private breakpointObserver: BreakpointObserver
 	) {}
 
 	/**
@@ -34,6 +42,16 @@ export class MeteorologyComponent implements OnInit {
 	 */
 	public ngOnInit(): void {
 		this.getMeteorologySoles();
+
+		this.breakpointSubscription = this.breakpointObserver
+			.observe(['(max-width: 768px)', '(max-width: 1024px)'])
+			.subscribe((state: BreakpointState) => {
+				this.isSmallScreen = state.breakpoints['(max-width: 768px)'];
+				this.isMediumScreen = state.breakpoints['(max-width: 1024px)'];
+				this.isLargeScreen =
+					!state.breakpoints['(max-width: 768px)'] &&
+					!state.breakpoints['(max-width: 1024px)'];
+			});
 	}
 
 	/**
@@ -149,5 +167,44 @@ export class MeteorologyComponent implements OnInit {
 	public onNextClick(): void {
 		const next: number = this.currentCard + 1;
 		this.currentCard = next >= this.sols.length ? 0 : next;
+	}
+
+	/**
+	 * Determines whether the card at the specified index should be displayed.
+	 *
+	 * @param {number} index - The index of the card.
+	 * @return {boolean} Returns true if the card should be displayed, otherwise false.
+	 */
+	public shouldDisplayCard(index: number): boolean {
+		if (this.isSmallScreen) {
+			return index === this.currentCard;
+		} else if (this.isMediumScreen) {
+			return index === this.currentCard || index === this.currentCard + 1;
+		} else if (this.isLargeScreen) {
+			return (
+				index === this.currentCard ||
+				index === this.currentCard + 1 ||
+				index === this.currentCard + 2
+			);
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Determines whether the arrow right should be displayed.
+	 *
+	 * @returns {boolean} True if the arrow right should be displayed, false otherwise.
+	 */
+	public shouldDisplayArrowRight(): boolean {
+		if (this.isSmallScreen && this.currentCard >= 1) {
+			return false;
+		} else if (this.isMediumScreen && this.currentCard >= 2) {
+			return false;
+		} else if (this.isLargeScreen && this.currentCard >= 3) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

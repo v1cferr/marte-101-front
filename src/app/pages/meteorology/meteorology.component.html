@@ -111,7 +111,7 @@
 				*ngFor="let sol of sols.slice(1, 15); let i = index"
 			>
 				<app-meteorology-card
-					*ngIf="i === currentCard"
+					*ngIf="shouldDisplayCard(i)"
 					[class]="'card-' + (i + 1)"
 					[sol]="sol?.sol"
 					[terrestrial_date]="sol?.terrestrial_date"
@@ -135,7 +135,7 @@
 			<button
 				class="control next"
 				(click)="onNextClick()"
-				*ngIf="currentCard !== 13"
+				*ngIf="shouldDisplayArrowRight()"
 			>
 				<span class="arrow right"></span>
 			</button>
