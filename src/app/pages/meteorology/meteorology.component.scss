@@ -114,8 +114,6 @@ $card-border-color: #292929;
 			// Center Container
 			.center {
 				@include flex-center;
-				// width: 40.875rem;
-				// height: 13.25rem;
 				border-radius: 1.625rem;
 				background: rgba(62, 51, 51, 0.25);
 				gap: 4rem;
@@ -252,7 +250,7 @@ $card-border-color: #292929;
 			height: 100%;
 			overflow: hidden;
 			position: relative;
-			width: 90%;
+			width: 100%;
 
 			.container {
 				display: block;
@@ -305,6 +303,76 @@ $card-border-color: #292929;
 				}
 				&.right {
 					transform: rotate(225deg);
+				}
+			}
+		}
+	}
+}
+
+// MEDIA QUERIES
+@media only screen and (width < 1330px) {
+	.meteorology {
+		.content {
+			padding: 3.5rem 3.5rem 0 3.5rem;
+		}
+	}
+}
+
+@media only screen and (width <= 1216px) {
+	.meteorology {
+		.content {
+			.header {
+				margin-bottom: 4.5rem;
+			}
+			.main {
+				align-items: center;
+				flex-direction: column;
+				gap: 1.5rem;
+				margin-bottom: 4rem;
+
+				.right {
+					width: 80%;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (width <= 1200px) {
+	.meteorology {
+		.content {
+			padding: 4.5rem 1.5rem 0 1.5rem;
+		}
+	}
+}
+
+@media only screen and (width <= 630px) {
+	.meteorology {
+		.content {
+			.header {
+				margin-bottom: 3rem;
+
+				.arrow-icon {
+					left: -40px !important;
+				}
+			}
+
+			.main {
+				gap: 1.75rem;
+				margin-bottom: 2rem;
+
+				.center {
+					flex-direction: column;
+					gap: 1rem;
+					padding: 2rem 3rem 2rem 2rem;
+
+					.temperature {
+						box-sizing: unset;
+					}
+				}
+
+				.right {
+					width: 90%;
 				}
 			}
 		}
