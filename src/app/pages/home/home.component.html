@@ -11,8 +11,8 @@
 			>
 		</header>
 
-		<main class="cards">
-			<div class="card">
+		<main class="cards carousel">
+			<div class="first card">
 				<img
 					src="../../../assets/first-card.jpg"
 					alt="Imagem do primeiro card"
@@ -41,7 +41,7 @@
 				</section>
 			</div>
 
-			<div class="card">
+			<div class="second card">
 				<img
 					src="../../../assets/second-card.jpg"
 					alt="Imagem do segundo card"
@@ -65,7 +65,7 @@
 				</section>
 			</div>
 
-			<div class="card">
+			<div class="third card">
 				<img
 					src="../../../assets/third-card.jpg"
 					alt="Imagem do terceiro card"
@@ -87,6 +87,13 @@
 					</div>
 				</section>
 			</div>
+
+			<button class="control prev" (click)="onPreviousClick()">
+				<span class="arrow left"></span>
+			</button>
+			<button class="control next" (click)="onNextClick()">
+				<span class="arrow right"></span>
+			</button>
 		</main>
 
 		<app-confirmation-window></app-confirmation-window>
