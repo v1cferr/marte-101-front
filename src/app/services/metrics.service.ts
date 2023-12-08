@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class MetricsService {
-	private apiUrl = 'http://localhost:4444';
+	private apiUrl: string = 'http://localhost:4444';
 
 	constructor(private http: HttpClient) {}
 
