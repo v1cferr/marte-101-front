@@ -4,14 +4,33 @@ import { Component, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { WindowService } from 'src/app/services/window.service';
 import { Router } from '@angular/router';
 
+interface Card {
+	image: string;
+	container: {
+		warning: {
+			text: string;
+		};
+		description: {
+			title: string;
+			content: string;
+		};
+		button: {
+			enabled: boolean;
+		};
+	};
+}
+interface Arrow {
+	left: boolean;
+	right: boolean;
+}
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements AfterViewInit {
-	public cards: any[] = [];
-	public arrows: any[] = [];
+	public cards: Card[] = [];
+	public arrows: Arrow[] = [];
 	public currentCardIndex: number = 0;
 
 	/**
