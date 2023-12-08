@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
 import { WindowService } from 'src/app/services/window.service';
+import { MetricsService } from 'src/app/services/metrics.service';
 
 @Component({
 	selector: 'app-login',
@@ -15,8 +16,10 @@ export class LoginComponent {
 
 	constructor(
 		private router: Router,
-		private windowService: WindowService, 
-		private apiService: Marte101ApiService) {}
+		private windowService: WindowService,
+		private apiService: Marte101ApiService,
+		private metricsService: MetricsService
+	) {}
 
 	public hide: boolean = true;
 
@@ -35,7 +38,17 @@ export class LoginComponent {
 	 * @return {void} The function does not return a value.
 	 */
 	public goToRegistration(): void {
+		this.registrationStarted();
 		this.router.navigate(['registration']);
+	}
+
+	/**
+	 * Registers that the registration process has started.
+	 *
+	 * @return {void} - This function does not return a value.
+	 */
+	public registrationStarted(): void {
+		this.metricsService.patchRegistrationStarted();
 	}
 
 	public loginForm = new FormGroup({
@@ -61,7 +74,7 @@ export class LoginComponent {
 			password: string;
 			rememberMe: boolean;
 		};
-		
+
 		try {
 			const response = await this.apiService.postUserLogin(
 				getFormInputsValues.email as string,
@@ -78,10 +91,8 @@ export class LoginComponent {
 			if (tokenValidate) {
 				this.router.navigate(['/home']);
 			}
-
 		} catch (error) {
 			this.showError = true;
 		}
-
 	}
 }

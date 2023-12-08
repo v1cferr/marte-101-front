@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {
 	FormControl,
 	FormGroup,
@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
 import { Marte101ApiService } from 'src/app/services/marte-101-api.service';
+import { MetricsService } from 'src/app/services/metrics.service';
 
 @Component({
 	selector: 'app-registration',
@@ -24,7 +25,8 @@ export class RegistrationComponent {
 	constructor(
 		private router: Router,
 		private windowService: WindowService,
-		private apiService: Marte101ApiService
+		private apiService: Marte101ApiService,
+		private metricsService: MetricsService
 	) {}
 
 	/**
@@ -127,7 +129,29 @@ export class RegistrationComponent {
 	 * @return {void} - This function does not return any value.
 	 */
 	public goToLogin(): void {
+		this.incompleteRegistration();
 		this.router.navigate(['']);
+	}
+
+	@HostListener('window:beforeunload', ['$event'])
+	/**
+	 * Executes the necessary actions before the page is unloaded.
+	 *
+	 * @param {Event} event - The event object representing the page unload event.
+	 * @return {void} This function does not return anything.
+	 */
+	public onBeforeUnload(event: Event): void {
+		this.incompleteRegistration();
+		event.preventDefault();
+	}
+
+	/**
+	 * Incomplete registration function.
+	 *
+	 * @return {void} No return value.
+	 */
+	public incompleteRegistration(): void {
+		this.metricsService.patchIncompleteRegistrations();
 	}
 
 	/**
@@ -135,7 +159,7 @@ export class RegistrationComponent {
 	 *
 	 * @return {Promise<void>} A promise that resolves when the form data is successfully submitted.
 	 */
-	public async onSubmit() {
+	public async onSubmit(): Promise<void> {
 		const getFormInputsValues = this.registrationForm.value as {
 			firstName: string;
 			lastName: string;
