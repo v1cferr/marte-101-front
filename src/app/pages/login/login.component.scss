@@ -214,3 +214,45 @@ $text-inactive-submit-color: #171717;
 		}
 	}
 }
+
+$mobile-max-width: 550px;
+
+@media only screen and (max-width: $mobile-max-width) {
+	.login {
+	  .welcome {
+		h1 {
+		  font-size: 2rem;
+		}
+		p {
+		  font-size: 0.8rem;
+		}										
+	  }
+  
+	  .form {
+
+		align-items: center ;
+
+		.email {
+			width: 300px;
+			align-items: center;
+		}
+		.password {
+			width: 300px;
+			align-items: center;
+		}
+	  }
+  
+	  .container {
+		width: 300px;
+	  }
+  
+	  .submit {
+		width: 300px;
+	  }
+  
+	  .registration {
+		width: 300px;
+	  }
+	}
+  }
+

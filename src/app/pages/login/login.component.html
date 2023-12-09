@@ -60,6 +60,9 @@
 			<mat-error *ngIf="showError === true" class="error-message"
 				>Erro de autenticação: Credenciais inválidas</mat-error
 			>
+			<mat-error *ngIf="showErrorEmailValidation === true" class="error-message"
+				>Erro de autenticação: E-mail não verificado</mat-error
+			>
 			<button
 				mat-flat-button
 				class="submit"
@@ -75,9 +78,15 @@
 					tabindex="0"
 					(click)="goToRegistration()"
 					(keydown)="goToRegistration()"
-					>Ainda não é cadastrado?</span
-				>
+					>Ainda não é cadastrado?</span>
 			</div>
+			<app-success-window
+					[description]="
+					'Cadastro verificado com sucesso'
+					"
+			></app-success-window>
+
+
 		</form>
 	</div>
 </section>

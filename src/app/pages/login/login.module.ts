@@ -7,17 +7,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/app/material/material.module';
 
 import { LoginComponent } from './login.component';
+import { SuccessWindowComponent } from "../../components/success-window/success-window.component";
 
 @NgModule({
-	declarations: [LoginComponent],
-	imports: [
-		CommonModule,
-		FlexLayoutModule,
-		MaterialModule,
-		FormsModule,
-		ReactiveFormsModule,
-		NgIf,
-	],
-	exports: [LoginComponent],
+    declarations: [LoginComponent],
+    exports: [LoginComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        SuccessWindowComponent
+    ]
 })
 export class LoginModule {}

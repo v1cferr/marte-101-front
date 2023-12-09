@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -45,6 +46,21 @@ export class Marte101ApiService {
 				token,
 			})
 			.toPromise();
+	}
+
+	/**
+	 * Sends a POST request to the server for user email validation.
+	 *
+	 * @param {string} token - The email validation token.
+	 * @return {Promise<any>} A promise that resolves with the response from the server.
+	 *
+	 * 
+	 */ 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public postUserEmailValidation(token: string): Observable<any> {
+		return this.http.post(`${this.apiUrl}/users/email-validation`, {
+			token,
+		})
 	}
 
 	/**
