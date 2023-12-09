@@ -1,0 +1,8 @@
+[build]
+  ignore = ["!*.scss"]
+
+[[plugins]]
+  package = "netlify-plugin-check-netlify-limits"
+
+  [plugins.inputs]
+    maxAssetSize = 512000
