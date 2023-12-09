@@ -15,8 +15,9 @@ export class LoginComponent {
 
 	constructor(
 		private router: Router,
-		private windowService: WindowService, 
-		private apiService: Marte101ApiService) {}
+		private windowService: WindowService,
+		private apiService: Marte101ApiService
+	) {}
 
 	public hide: boolean = true;
 
@@ -51,9 +52,9 @@ export class LoginComponent {
 	});
 
 	/**
-	 * Submits the form data and performs the login process.
+	 * Submits the form data to the server for user login.
 	 *
-	 * @return {Promise<void>} Promise that resolves when the login process is complete.
+	 * @return {Promise<void>} A promise that resolves when the login process is complete.
 	 */
 	public async onSubmit(): Promise<void> {
 		const getFormInputsValues = this.loginForm.value as {
@@ -61,7 +62,7 @@ export class LoginComponent {
 			password: string;
 			rememberMe: boolean;
 		};
-		
+
 		try {
 			const response = await this.apiService.postUserLogin(
 				getFormInputsValues.email as string,
@@ -71,17 +72,9 @@ export class LoginComponent {
 
 			localStorage.setItem('token', response.token);
 
-			const tokenValidate = await this.apiService.postUserTokenValidation(
-				response.token
-			);
-
-			if (tokenValidate) {
-				this.router.navigate(['/home']);
-			}
-
+			this.router.navigate(['/home']);
 		} catch (error) {
 			this.showError = true;
 		}
-
 	}
 }

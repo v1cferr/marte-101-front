@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class MeteorologyService {
-	private apiUrl: string = 'http://localhost:4444';
+	private apiUrl: string = 'https://trapezium.ddns.net';
 
 	constructor(private http: HttpClient) {}
 

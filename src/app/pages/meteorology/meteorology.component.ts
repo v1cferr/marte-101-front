@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
-import { MeteorologyService } from './api/meteorology.services';
+import { MeteorologyService } from '../../services/meteorology.services';
 
 @Component({
 	selector: 'app-meteorology',

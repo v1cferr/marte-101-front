@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 	providedIn: 'root',
 })
 export class Marte101ApiService {
-	private apiUrl: string = 'http://localhost:4444';
+	private apiUrl: string = 'https://trapezium.ddns.net';
 
 	constructor(private http: HttpClient) {}
 	/**
@@ -18,13 +18,13 @@ export class Marte101ApiService {
 	 * @return {Promise<any>} A promise that resolves with the response data.
 	 */
 	postUserLogin(
-		email: string,	
+		email: string,
 		password: string,
 		rememberMe: boolean
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): Promise<any> {
 		return this.http
-			.post(`http://localhost:4444/users/login`, {
+			.post(`${this.apiUrl}/users/login`, {
 				email,
 				password,
 				rememberMe,
@@ -57,7 +57,7 @@ export class Marte101ApiService {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	patchUserNewPassword(token: string, password: string): Promise<any> {
 		return this.http
-			.patch('http://localhost:4444/users/password-change', {
+			.patch(`${this.apiUrl}/users/password-change`, {
 				token,
 				password,
 			})
