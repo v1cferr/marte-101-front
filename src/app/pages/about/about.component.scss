@@ -1,0 +1,241 @@
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin letter-size {
+	text-transform: uppercase;
+}
+
+@mixin mainly-gap {
+	gap: 3.5rem;
+}
+
+$active-color: #ba8e73;
+$title-secondary-color: #ffd2b5;
+$foundation-gray-scale-white: #fff;
+$foundation-gray-scale-black: #000;
+$inactive-send-color: #979797;
+$text-inactive-send-color: #171717;
+$warning-bg-color: #f9d6c7;
+$warning-text-color: #b0683b;
+$divider-color: #d9d9d9;
+$card-border-color: #292929;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: $foundation-gray-scale-white;
+}
+
+.about {
+	align-items: center;
+	background: url(../../../assets/Epic-Sky-03-2.png) no-repeat center center
+		fixed;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		padding: 6rem;
+		@include mainly-gap();
+
+		header {
+			.welcome {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.75rem;
+
+				h1 {
+					color: $title-secondary-color;
+					font-size: 3rem;
+					font-weight: 700;
+					@include letter-size();
+				}
+
+				p {
+					font-size: 1.25rem;
+					font-weight: 700;
+					align-self: flex-end;
+				}
+			}
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+
+			.description {
+				border-radius: 1.0625rem;
+				background: rgba(0, 0, 0, 0.2);
+				padding: 1.25rem;
+				width: 75%;
+
+				.text {
+					p {
+						font-size: 1.0625rem;
+						font-weight: 500;
+
+						span {
+							color: $title-secondary-color;
+							font-size: 1.75rem;
+							font-weight: 700;
+							@include letter-size();
+						}
+					}
+				}
+			}
+		}
+
+		footer {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			align-items: center;
+
+			.access {
+				.buttons {
+					display: flex;
+					gap: 1rem;
+
+					button {
+						text-align: center;
+						background-color: rgba(217, 217, 217, 0.03);
+						opacity: 0.75;
+						color: $foundation-gray-scale-white;
+						text-transform: uppercase;
+						width: 15rem;
+						height: 5rem;
+
+						&:hover {
+							opacity: 1;
+						}
+					}
+
+					.registration {
+						background-color: #ffd3b549;
+						color: rgba(217, 217, 217, 0.747);
+					}
+				}
+			}
+
+			.contacts {
+				display: flex;
+				gap: 3.5rem;
+
+				.email {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5rem;
+					align-items: center;
+
+					h2 {
+						color: $title-secondary-color;
+						font-size: 1.25rem;
+						font-weight: 700;
+						text-transform: uppercase;
+					}
+
+					a {
+						outline: none;
+						text-decoration: none;
+					}
+				}
+
+				.instagram {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+
+					h2 {
+						color: $title-secondary-color;
+						font-size: 1.25rem;
+						font-weight: 700;
+						text-transform: uppercase;
+					}
+
+					a {
+						img {
+							width: 3.5rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (width <= 1060px) {
+	.about {
+		.content {
+			padding: 2.5rem;
+
+			main {
+				gap: 1rem;
+			}
+
+			footer {
+				.access {
+					.buttons {
+						flex-direction: column;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (width <= 730px) {
+	.about {
+		.content {
+			gap: 1.5rem;
+
+			header {
+				.welcome {
+					h1 {
+						font-size: 2rem;
+					}
+
+					p {
+						font-size: 1rem;
+					}
+				}
+			}
+
+			main {
+				.description {
+					width: 90%;
+
+					.text {
+						p {
+							font-size: 1rem;
+							span {
+								font-size: 1.5rem;
+							}
+						}
+					}
+				}
+			}
+
+			footer {
+				flex-direction: column;
+				gap: 3rem;
+
+				.access {
+					.buttons {
+						flex-direction: row;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,1 +1,94 @@
-<p>about works!</p>
+<main class="about">
+	<section class="content">
+		<header>
+			<section class="welcome">
+				<h1>Bem-vindo ao Marte 101</h1>
+				<p>
+					A sua plataforma de informações meteorológicas do planeta vermelho
+				</p>
+			</section>
+		</header>
+		<main>
+			<section class="description whoweare">
+				<div class="text">
+					<p>
+						<span>Somos</span> uma equipe apaixonada pela tecnologia e pela
+						exploração espacial. Juntos unimos forças para criar uma experiência
+						envolvente que transporta pensamentos para as complexidades
+						atmosféricas de marte.
+					</p>
+				</div>
+			</section>
+
+			<section class="description ourmission">
+				<div class="text">
+					<p>
+						<span>Nossa missão</span> é proporcionar uma experiência educativa e
+						emocionante, oferecendo informações complexas de maneira acessível.
+						Buscamos inspirar a curiosidade e alimentar o fascínio pelo espaço,
+						compartilhando as maravilhas do clima marciano com entusiastas ao
+						redor do mundo.
+					</p>
+				</div>
+			</section>
+
+			<section class="description ourvalues">
+				<div class="text">
+					<p>
+						<span>Nossos valores</span> estão focados na inovação educacional,
+						onde nos comprometemos em apresentar informações complexas com total
+						segurança, promovendo a educação e a compreensão do clima de Marte
+						de forma envolvente e interativa.
+					</p>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<section class="access">
+				<h2>Acessar:</h2>
+				<nav class="buttons">
+					<button
+						mat-flat-button
+						class="login"
+						type="button"
+						(click)="goToLogin()"
+					>
+						Login
+					</button>
+					<button
+						mat-flat-button
+						class="registration"
+						type="button"
+						(click)="goToRegistration()"
+					>
+						Realizar cadastro
+					</button>
+				</nav>
+			</section>
+
+			<section class="contacts">
+				<div class="email">
+					<h2>Contato</h2>
+
+					<a href="mailto:programamarte101@outlook.com"
+						>programamarte101@outlook.com</a
+					>
+				</div>
+
+				<div class="instagram">
+					<h2>Siga-nos</h2>
+
+					<a
+						href="https://www.instagram.com/oficialmarte101/"
+						target="_blank"
+						rel="noopener noreferrer"
+						><img
+							src="../../../assets/icons/instagram-logo-gradient-transparent.png"
+							alt="Logo do Instagram"
+					/></a>
+					<mat-icon svgIcon="instagram"></mat-icon>
+				</div>
+			</section>
+		</footer>
+	</section>
+</main>
