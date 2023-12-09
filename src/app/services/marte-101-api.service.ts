@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class Marte101ApiService {
-	private apiUrl: string = 'http://localhost:4444';
+	private apiUrl: string = 'https://trapezium.ddns.net';
 
 	constructor(private http: HttpClient) {}
 	/**
@@ -24,7 +25,7 @@ export class Marte101ApiService {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): Promise<any> {
 		return this.http
-			.post(`http://localhost:4444/users/login`, {
+			.post(`${this.apiUrl}/users/login`, {
 				email,
 				password,
 				rememberMe,
@@ -48,6 +49,21 @@ export class Marte101ApiService {
 	}
 
 	/**
+	 * Sends a POST request to the server for user email validation.
+	 *
+	 * @param {string} token - The email validation token.
+	 * @return {Promise<any>} A promise that resolves with the response from the server.
+	 *
+	 * 
+	 */ 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public postUserEmailValidation(token: string): Observable<any> {
+		return this.http.post(`${this.apiUrl}/users/email-validation`, {
+			token,
+		})
+	}
+
+	/**
 	 * Sends a PATCH request to the server to update the user's password.
 	 *
 	 * @param {string} token - The token for authentication.
@@ -57,7 +73,7 @@ export class Marte101ApiService {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	patchUserNewPassword(token: string, password: string): Promise<any> {
 		return this.http
-			.patch('http://localhost:4444/users/password-change', {
+			.patch(`${this.apiUrl}/users/password-change`, {
 				token,
 				password,
 			})
