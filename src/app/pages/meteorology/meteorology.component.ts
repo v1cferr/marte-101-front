@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WindowService } from 'src/app/services/window.service';
-import { MeteorologyService } from './api/meteorology.services';
+import { MeteorologyService } from '../../services/meteorology.services';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 

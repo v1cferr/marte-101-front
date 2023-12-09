@@ -14,6 +14,7 @@ import { NewPasswordModule } from './pages/new-password/new-password.module';
 import { RegistrationModule } from './pages/registration/registration.module';
 import { HomeModule } from './pages/home/home.module';
 import { MeteorologyModule } from './pages/meteorology/meteorology.module';
+import { AboutModule } from './pages/about/about.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { MeteorologyModule } from './pages/meteorology/meteorology.module';
 		RegistrationModule,
 		HomeModule,
 		MeteorologyModule,
+		AboutModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

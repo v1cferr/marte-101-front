@@ -19,7 +19,7 @@ export class Marte101ApiService {
 	 * @return {Promise<any>} A promise that resolves with the response data.
 	 */
 	postUserLogin(
-		email: string,	
+		email: string,
 		password: string,
 		rememberMe: boolean
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
