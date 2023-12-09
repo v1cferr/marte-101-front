@@ -9,7 +9,7 @@ import { MeteorologyComponent } from './pages/meteorology/meteorology.component'
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-	{ path: '', component: LoginComponent },
+	{ path: 'login/:token', component: LoginComponent},
 	{ path: 'recover-password', component: RecoverPasswordComponent },
 	{ path: 'registration', component: RegistrationComponent },
 	{ path: 'home', component: HomeComponent },
